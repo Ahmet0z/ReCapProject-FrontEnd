@@ -11,6 +11,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     ColorComponent,
     CustomerComponent,
     RentalComponent,
-    CarDetailComponent
+    CarDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,18 +7,15 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <!--Table-->
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th>Renk Id</th>
-      <th>Renk Adı</th>
 
-    </tr>
-  </thead>
-  <tr *ngFor="let color of colors">
-
-    <td>{{ color.colorId }}</td>
-    <td>{{ color.colorName }}</td>
-
-  </tr>
-</table>
+<ul *ngIf="dataLoaded == true" class="list-group">
+  
+  <li 
+  (click)="setCurrentColor(color)"
+    routerLink = "/cars/color/{{color.colorId}}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColorClass(color)"
+  >
+    {{ color.colorName }}
+  </li>
+</ul>

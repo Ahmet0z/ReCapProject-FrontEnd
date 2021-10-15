@@ -1,32 +1,111 @@
-<!-- Spinner -->
+<!--
+  <img
+      class="carImage"
+      routerLink="/cars/getimages/{{ car.id }}"
+      src="{{ imgUrl }}"
+      class="card-img-top"
+      alt="Image"
+      role="button"
+      width="200"
+      height="200"
+    />
+  -->
+<!-- <div class="row">
 <div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-secondary"
-  role="status"
+  class="col-lg-4 col-md-6 shadow-lg p-3 mb-5 rounded"
+  *ngFor="let carDetail of carDetails"
 >
-  <span class="visually-hidden">Loading...</span>
-</div>
-<!--Table-->
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Model</th>
-      <th>Renk</th>
-      <th>Araba adı</th>
-      <th>Açıklama</th>
-      <th>Model Yılı</th>
-      <th>Günlük Fiyatı</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.id}}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.carName }}</td>
-    <td>{{ car.description }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
+    <div class="card border-0 mb-3" style="width: 18rem">
+    
+    <img *ngIf="carDetail.imagePath" [src]="imageUrl+carDetail.imagePath" class="card-img-top"
+      style="object-fit: cover;" width="100" height="50%" alt="...">
+    <img *ngIf="!carDetail.imagePath" [src]="imageUrl+'/images/default.jpg'" class="card-img-top"
+      style="object-fit: cover;" width="100" height="50%" alt="...">
+    <div class="card-body text-center">
+      <h4>
+        <a
+          routerLink="/cars/getcars/{{ carDetail.id }}"
+          class="card-title text-decoration-none h5"
+          style="color: #007bff"
+          >{{ carDetail.brandName }}
+        </a>
+      </h4>
+    </div>
+    <ul class="list-group list-group-flush">
+      
+      <li class="list-group-item">
+        <span class="float-start">Renk</span>
+        <span class="float-end">{{ carDetail.colorName }}</span>
+      </li>
+      <li class="list-group-item">
+        <span class="float-start">Model</span>
+        <span class="float-end">{{ carDetail.modelYear }}</span>
+      </li>
+      <li class="list-group-item">
+        <span class="float-start">Açıklama</span>
+        <span class="float-end">{{ carDetail.description }}</span>
+      </li>
+      <p class="card-text text-center h3 mt-3">{{ carDetail.dailyPrice }}₺</p>
+    </ul>
+    <div class="card-body">
+      <div class="d-flex action justify-content-between">
+        
 
-  </tr>
-</table>
+        <a class="btn btn-primary w-100" routerLink="/cars/details/{{ carDetail.id }}">Detaylar</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div> -->
+
+<h4 class="mt-3">ARAÇ LİSTESİ</h4>
+<div class="row">
+  <div class="col-md-4">
+    <select [(ngModel)]="brandFilter" class="form-select" aria-placeholder="Marka Seçiniz">
+      <option value=0>Marka Seç</option>
+      <option *ngFor="let brand of brands" [value]="brand.brandId" [selected]="getSelectedBrand(brand.brandId)">
+        {{brand.brandName}}</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+      <option value=0>Renk Seç</option>
+      <option *ngFor="let color of colors" [value]="color.colorId" [selected]="getSelectedColor(color.colorId)">
+        {{color.colorName}}</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <button routerLink="/cars/color/{{colorFilter}}" style="width: 100%;" type="button"
+      class="btn  btn-outline-dark">
+      Filtre
+    </button>
+  </div>
+</div>
+<div class="row mt-4" style="margin-left: 1%;">
+
+  <div *ngFor="let cardetail of carDetails" class="card mt-2 mr-2" style="width: 18rem;margin-right: 10px;">
+
+    <img *ngIf="cardetail.imagePath" [src]="imageUrl+cardetail.imagePath" class="card-img-top"
+      style="object-fit: cover;" width="100" height="50%" alt="...">
+    <img *ngIf="!cardetail.imagePath" [src]="imageUrl+'/images/default.jpg'" class="card-img-top"
+      style="object-fit: cover;" width="100" height="50%" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ cardetail.carName }}</h5>
+      <p class="card-text"> </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ cardetail.modelYear }}</li>
+      <li class="list-group-item">{{ cardetail.colorName }} </li>
+      <li class="list-group-item">{{ cardetail.brandName }}</li>
+      <li class="list-group-item">{{ cardetail.carName }}</li>
+      <li class="list-group-item">{{ cardetail.dailyPrice  | currency: "USD" : true:"1.2-2"}}</li>
+      <li class="list-group-item">{{ cardetail.description}}</li>
+    </ul>
+    <div class="card-body">
+      <div class="row">
+        <button type="button" routerLink="/cars/details/{{cardetail.id}}"
+          class="btn btn-outline-dark">Araba Detay</button>
+      </div>
+    </div>
+  </div>
+</div>
