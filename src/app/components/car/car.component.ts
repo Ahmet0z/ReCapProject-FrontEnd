@@ -26,7 +26,7 @@ export class CarComponent implements OnInit {
   currentCar: Car;
   dataLoaded = false;
   imageUrl = 'http://192.168.1.22:8080/';
-
+  //imageUrl="http://172.20.10.7:8080"
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
@@ -46,6 +46,9 @@ export class CarComponent implements OnInit {
         this.getCarsByColor(params['colorId']);
       } else if (params['carId']) {
         this.getCarDetails(params['carId']);
+      } else if(params['brandId'] && params['colorId']){
+        this.getCarDetailByColorAndBrand(params['brandId'],params['colorId']);
+        console.log("a")
       } else {
         this.getCars();
       }
@@ -55,8 +58,7 @@ export class CarComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.carDetails = response.data,
-      this.dataLoaded = true,
-      console.log(this.carDetails)
+      this.dataLoaded = true
     });
   }
 
@@ -110,4 +112,13 @@ export class CarComponent implements OnInit {
       console.log(this.brands);
     });
   }
+
+  getCarDetailByColorAndBrand(colorId: number, brandId: number) {
+    this.carService.getCarDetailByColorAndBrand(colorId, brandId)
+      .subscribe((response) => {
+        console.log(response)
+        this.carDetails = response.data;
+      });
+  }
+
 }

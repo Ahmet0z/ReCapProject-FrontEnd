@@ -1,13 +1,4 @@
-<!-- Spinner -->
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-secondary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
-</div>
-<!--Table-->
-
+<!-- 
 <ul *ngIf="dataLoaded == true" class="list-group">
   
   <li 
@@ -18,4 +9,22 @@
   >
     {{ color.colorName }}
   </li>
-</ul>
+</ul> -->
+
+<div class="collapse show" id="color-collapse">
+  <div class="card-header" ><label for="colorFilter" class="form-label" >Renk Ara</label>
+    <input
+      type="text"
+      class="form-control"
+      id="colorFilter"
+      placeholder="Arama ifadesi giriniz.."
+      [(ngModel)]="colorFilter"
+     
+    />
+  </div>
+  <ul class="list-group" >
+    <li *ngFor="let color of colors | colorPipe:colorFilter"> <a routerLink = "/cars/color/{{color.colorId}}" class="list-group-item">{{color.colorName}}</a></li>
+  </ul>
+</div>
+
+

@@ -1,15 +1,8 @@
-<!-- Spinner -->
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-secondary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
-</div>
+
 
 <!--Table  routerLink = "/cars/brand/{{brand.brandId}}" -->
 
-<ul class="list-group">
+<!-- <ul class="list-group">
   <li
     (click)="setCurrentBrand(brand)"
     routerLink = "/cars/brand/{{brand.brandId}}"
@@ -18,6 +11,19 @@
   >
     {{ brand.brandName }}
   </li>
-</ul>
+</ul> -->
 
-<h5 *ngIf = 'currentBrand'>{{currentBrand.brandName}} Seçtiniz.</h5>
+<div class="collapse show" id="brand-collapse">
+  <div class="card-header"><label for="colorFilter" class="form-label">Model Ara</label>
+    <input
+     type="text"
+     class="form-control"
+     id="brandFilter"
+     placeholder="Arama ifadesi giriniz.."
+     [(ngModel)]="brandFilter"
+    />
+  </div>
+<ul class="list-group">
+      <li *ngFor="let brand of brands | brandPipe:brandFilter"> <a routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item ">{{brand.brandName}}</a></li>
+  </ul>
+</div>

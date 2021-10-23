@@ -19,6 +19,7 @@ export class CarDetailComponent implements OnInit {
   cardetails:CarDetail;
   myNumbers:number[]=[0,1,2,3,4]
   imageUrl = "http://192.168.1.22:8080";
+  //imageUrl = "http://172.20.10.7:8080"
 
   constructor(
     private carService: CarService,
