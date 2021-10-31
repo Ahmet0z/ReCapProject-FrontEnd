@@ -22,4 +22,5 @@ export class BrandComponent implements OnInit {
       this.brands=response.data;
     })
   } 
+
 }

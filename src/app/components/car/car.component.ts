@@ -9,6 +9,7 @@ import { BrandService } from 'src/app/services/brand.service';
 import { CarImagesService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-car',
@@ -25,8 +26,8 @@ export class CarComponent implements OnInit {
 
   currentCar: Car;
   dataLoaded = false;
-  imageUrl = 'http://192.168.1.22:8080/';
-  //imageUrl="http://172.20.10.7:8080"
+  imageUrl = environment.imageUrl
+  
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,

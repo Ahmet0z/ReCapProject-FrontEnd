@@ -1,0 +1,7 @@
+{
+    "bracketPairColorizer.showBracketsInRuler": true,
+    "bracketPairColorizer.showBracketsInGutter": true,
+    "bracketPairColorizer.forceIterationColorCycle": true,
+    "bracketPairColorizer.forceUniqueOpeningColor": true,
+    "bracketPairColorizer.highlightActiveScope": true
+}

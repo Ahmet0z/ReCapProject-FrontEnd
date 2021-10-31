@@ -23,5 +23,6 @@ export class ColorComponent implements OnInit {
       this.colors = response.data;
       console.log(this.colors);
     });
+    
   }
 }

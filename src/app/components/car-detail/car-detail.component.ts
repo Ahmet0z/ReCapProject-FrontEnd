@@ -7,6 +7,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImagesService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-car-detail',
@@ -18,8 +19,7 @@ export class CarDetailComponent implements OnInit {
   carImage:CarImage[]=[];
   cardetails:CarDetail;
   myNumbers:number[]=[0,1,2,3,4]
-  imageUrl = "http://192.168.1.22:8080";
-  //imageUrl = "http://172.20.10.7:8080"
+  imageUrl = environment.imageUrl
 
   constructor(
     private carService: CarService,

@@ -4,6 +4,7 @@
       <div class="card-header" style="background-color: black;color:#77d0d9">
         Ödeme
       </div>
+      <div style="background-color: rgb(231, 231, 231)">
       <div class="card-body">
         <div class="row mb-3">
           <div class="col-md-6 mx-auto">
@@ -15,6 +16,7 @@
           </div>
         </div>
       
+        
         <form [formGroup]="paymentForm" class="row g-3">
           <div class="col-12 mt-3">
             <label for="inputAddress" class="form-label">Kartın Üstündeki İsim</label>
@@ -46,6 +48,7 @@
             <button type="submit" class="btn btn-dark" style="color:#77d0d9" (click)="addPayment()" routerLink="/cars">Ödeme Yap</button>
           </div>
         </form>
+      </div>
         <div class="col-12">  <label class="form-check-label col-md-9" >Kartı Kaydetmek İster misiniz?</label></div>
         <div class="form-check form-group form-switch offset-6">
          
