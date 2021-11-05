@@ -215,6 +215,7 @@ export class CardetaillistComponent implements OnInit {
       let carModel = Object.assign({},this.carUpdateForm.value);
      
        this.carService.updateCar(carModel).subscribe(response=>{
+         console.log(response)
         
          this.toastrService.success(response.message,"güncellendi");
          setTimeout(() => {
@@ -222,6 +223,7 @@ export class CardetaillistComponent implements OnInit {
         }, 1000);
          
        },responseError=>{
+         console.log(responseError)
          this.toastrService.error("güncellenmedi");
        }
        )

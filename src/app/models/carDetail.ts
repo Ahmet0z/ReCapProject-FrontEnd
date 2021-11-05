@@ -9,5 +9,6 @@ export interface CarDetail{
     dailyPrice:number;
     description:string;
     imagePath:string[];
+    findeks:number
     isRentable:boolean
 }

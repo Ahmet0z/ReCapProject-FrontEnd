@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CarImage } from '../models/carImage';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -10,7 +11,7 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root'
 })
 export class CarImagesService {
-  private apiUrl = "https://localhost:44317/api/";
+  private apiUrl = environment.apiUrl
   constructor(private httpClient: HttpClient) { }
 
   getImagePath(imagePath: string) {

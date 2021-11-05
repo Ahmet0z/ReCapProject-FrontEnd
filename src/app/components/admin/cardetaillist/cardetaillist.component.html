@@ -14,6 +14,7 @@
                 <th scope="col">Marka Numarası</th>
                 <th scope="col">Günlük Fiyatı</th>
                 <th scope="col">Açıklması</th>
+                <th scope="col">Findeks Puanı</th>
                 <th scope="col">Güncelle</th>
                 <th scope="col">Sil</th>
               </tr>
@@ -26,6 +27,7 @@
                 <td>{{car.brandId }}</td>
                 <td>{{car.dailyPrice  | currency: "USD":true:"1.2-2" }}</td>
                 <td>{{car.description}}</td>
+                <td>{{car.findeks}}</td>
                 <td>
                   <button type="button"  class="btn btn-outline-dark" (click)="getCarUpdate(car)" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     Güncelle
@@ -223,6 +225,14 @@
                       formControlName="description"
                       class="form-control"
                       placeholder="Açıklaması"/>
+                     </div>
+                     <div class="form-group">
+                      <label for="findeks" class="col-sm-2 col-form-label col-form-label-sm">Findeks</label>
+                      <input type="number"
+                       id="findeks" 
+                      formControlName="findeks"
+                      class="form-control"
+                      placeholder="Findeks Puanı"/>
                      </div>
                    
                      <div class="row">

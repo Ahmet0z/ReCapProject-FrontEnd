@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Brand } from '../models/brand';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -10,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class BrandService {
-  apiUrl = 'https://localhost:44317/api/'
+  apiUrl = environment.apiUrl
   constructor( private httpClient :HttpClient ) { }
 
   getBrands():Observable<ListResponseModel<Brand>>{

@@ -42,13 +42,14 @@
       <p class="card-text" style="color:lime" *ngIf="cardetail.isRentable">Kiralanabilir </p>
       <p class="card-text" style="color:red" *ngIf="!cardetail.isRentable">Şu anda başka birisi tarafından kullanılmaktadır </p>
     </div>
-    <ul class="list-group list-group-flush" style="background-color:darkgray">
-      <li class="list-group-item list-group-item-light">{{ cardetail.modelYear }}</li>
-      <li class="list-group-item list-group-item-light">{{ cardetail.colorName }} </li>
-      <li class="list-group-item list-group-item-light">{{ cardetail.brandName }}</li>
-      <li class="list-group-item list-group-item-light">{{ cardetail.carName }}</li>
-      <li class="list-group-item list-group-item-light">{{ cardetail.dailyPrice  | currency: "TRY"}}</li>
-      <li class="list-group-item list-group-item-light">{{ cardetail.description}}</li>
+    <ul class="list-group list-group-flush" style="background-color:lightslategrey">
+      <li class="list-group-item ">{{ cardetail.modelYear }}</li>
+      <li class="list-group-item ">{{ cardetail.colorName }} </li>
+      <li class="list-group-item ">{{ cardetail.brandName }}</li>
+      <li class="list-group-item ">{{ cardetail.carName }}</li>
+      <li class="list-group-item ">{{ cardetail.dailyPrice  | currency: "TRY"}}</li>
+      <li class="list-group-item ">{{ cardetail.description}}</li>
+      <li class="list-group-item ">{{ cardetail.findeks}} Findeks</li>
     </ul>
     <div class="card-body">
       <div class="row">

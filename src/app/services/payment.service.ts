@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Card } from '../models/card';
 import { Payment } from '../models/payment';
 import { Rental } from '../models/rental';
@@ -14,7 +15,7 @@ import { RentalService } from './rental.service';
   providedIn: 'root',
 })
 export class PaymentService {
-  apiUrl = "https://localhost:44317/api/"
+  apiUrl = environment.apiUrl
   totalPrice: number;
   rentals: Rental;
   cardSavedRequest: boolean;

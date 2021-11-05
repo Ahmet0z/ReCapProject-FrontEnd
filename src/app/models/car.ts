@@ -6,5 +6,6 @@ export interface Car{
     modelYear:string;
     dailyPrice:number;
     description:string;
+    findeks:number;
     isRentable:boolean
 }

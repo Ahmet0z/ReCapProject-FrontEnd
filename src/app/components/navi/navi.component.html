@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" >CarRent</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,12 +28,96 @@
           </li>
         </ul>
         <form class="d-flex">
-          <div class="d-grid gap-2 col-6 mx-auto">
+          <div class="d-grid gap-2 col-6 mx-auto" *ngIf="isUserAdmin">
             <button class="btn btn-outline-dark"  routerLink="adminPanel">Admin Paneli</button>
             </div>
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
+  </nav> -->
+
+  <!-- <nav class="p-3 bg-dark text-white">
+    
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <img src="http://192.168.1.22:8080/Images/tas11.png" width="150" >
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="" class="nav-link px-2 text-white">Ana Sayfa</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Hakkımızda</a></li>
+
+        </ul>
+
+        <div class="text-middle">
+          <button *ngIf="isUserAdmin" type="button" routerLink="/adminPanel" class="btn btn-outline-light me-2">Admin Paneli</button>
+        </div>
+
+        <div class="text-end" *ngIf="isUserAuthenticated==false" >
+          <button  type="button" routerLink="/login" class="btn btn-outline-light me-2">Giriş yap</button>
+          <button  type="button" routerLink="/register" class="btn btn-warning">Kayıt ol</button>
+        </div>
+
+
+
+        <div class="dropdown" *ngIf="isUserAuthenticated==true">
+          <a role="button" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="http://192.168.1.22:8080/Images/profile.png" alt="mdo" width="32" height="32" class="rounded-circle" > {{user.userName}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" >Gsgd</a></li>
+            <li><a class="dropdown-item" href="#">sdg sdg</a></li>
+            <li><a class="dropdown-item" href="#">sgd</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+        
+        
+
+      </div>
+    </div>
+  </nav> -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <img src="http://192.168.1.22:8080/Images/tas11.png" width="150" >
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="" class="nav-link px-2 text-white">Ana Sayfa</a></li>
+        <li><a routerLink="/aboutUs" class="nav-link px-2 text-white">Hakkımızda</a></li>
+      </ul>
+
+      <div class="text-middle">
+        <button *ngIf="isUserAdmin" type="button" routerLink="/adminPanel" class="btn btn-outline-light me-2">Admin Paneli</button>
+      </div>
+
+      <div class="text-end position-absolute top-10 end-0" *ngIf="isUserAuthenticated==false" >
+        <button  type="button" routerLink="/login" class="btn btn-outline-light me-2">Giriş yap</button>
+        <li  type="button" routerLink="/register" class="btn btn-warning">Kayıt ol</li>
+      </div>
+     
+
+      <div class="collapse navbar-collapse position-absolute top-10 end-0" id="navbarNavDarkDropdown" *ngIf="isUserAuthenticated==true">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="d-block link-dark text-decoration-none dropdown-toggle me-2" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="http://192.168.1.22:8080/Images/profile.png" alt="mdo" width="32" height="32" class="rounded-circle" > {{user.userName}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="/customerDetail">Profil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logout()">Çıkış yap</a></li>
+            </ul>
+            
+          </li>
+        </ul>
+      </div>
+      </div>
+    </div>
   </nav>
+
+  
+
