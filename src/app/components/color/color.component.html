@@ -1,17 +1,4 @@
-<!-- 
-<ul *ngIf="dataLoaded == true" class="list-group">
-  
-  <li 
-  (click)="setCurrentColor(color)"
-    routerLink = "/cars/color/{{color.colorId}}"
-    *ngFor="let color of colors"
-    [class]="getCurrentColorClass(color)"
-  >
-    {{ color.colorName }}
-  </li>
-</ul> -->
-
-<div class="collapse show" id="color-collapse">
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
   <div class="card-header" ><label for="colorFilter" class="form-label" >Renk Ara</label>
     <input
     
@@ -24,7 +11,9 @@
     />
   </div>
   <ul class="list-group" >
-    <li *ngFor="let color of colors | colorPipe:colorFilter"> <a routerLink = "/cars/color/{{color.colorId}}" class="list-group-item">{{color.colorName}}</a></li>
+    <li *ngFor="let color of colors | colorPipe:colorFilter"> 
+      <a routerLink = "/cars/color/{{color.colorId}}" class="list-group-item list-group-item-action list-group-item-dark">{{color.colorName}}</a>
+    </li>
   </ul>
 </div>
 

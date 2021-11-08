@@ -49,7 +49,6 @@ export class CarComponent implements OnInit {
         this.getCarDetails(params['carId']);
       } else if(params['brandId'] && params['colorId']){
         this.getCarDetailByColorAndBrand(params['brandId'],params['colorId']);
-        console.log("a")
       } else {
         this.getCars();
       }
@@ -103,21 +102,18 @@ export class CarComponent implements OnInit {
   getAllColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
-      console.log(this.colors);
     });
   }
 
   getAllBrands() {
     this.brandService.getBrands().subscribe((response) => {
       this.brands = response.data;
-      console.log(this.brands);
     });
   }
 
   getCarDetailByColorAndBrand(colorId: number, brandId: number) {
     this.carService.getCarDetailByColorAndBrand(colorId, brandId)
       .subscribe((response) => {
-        console.log(response)
         this.carDetails = response.data;
       });
   }

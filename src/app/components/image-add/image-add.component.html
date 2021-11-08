@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Marka Ekle</h5></div>
+        <div class="card-body">
+          <form [formGroup]="imageAddForm">
+
+            <div class="mb-3">
+              <label for="file">Resim</label>
+              <div class="form-group">
+                <input
+                  type="file"
+                  id="file"
+                  formControlName="file"
+                  class="form-control"
+                  placeholder="Araç Resimi" 
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="carId" class="col-sm-2 col-form-label col-form-label-sm">Araba</label>
+                <select formControlName="carId"  class="form-select" aria-label="Araba Seçiniz"> 
+                    <option [ngValue]=0>Araba Seç</option> 
+                  <option [ngValue]="car.id" *ngFor="let car of cars" >{{car.carName}}</option>
+                </select>
+              </div>
+            
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-dark" (click)="add()" >Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>

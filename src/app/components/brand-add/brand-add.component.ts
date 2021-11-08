@@ -32,9 +32,11 @@ export class BrandAddComponent implements OnInit {
     if(this.brandAddForm.valid){
       let brandModel = Object.assign({}, this.brandAddForm.value)
       this.brandService.add(brandModel).subscribe(response=>{
+        setTimeout(() => { 
+          window.location.reload();      
+        }, 1000);
         this.toastrService.success(response.message,"Başarılı")
       },responsError=>{
-        console.log(responsError.error.Errors)
         for (let i = 0; i < responsError.error.Errors.length; i++) {
           this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
         }

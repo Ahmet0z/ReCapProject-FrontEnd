@@ -1,64 +1,61 @@
 <div class="content mt-5">
 
-    <div class="card text-center">
-      <div class="card-header" style="background-color: black;color:#77d0d9">
-        Ödeme
-      </div>
-      <div style="background-color: rgb(231, 231, 231)">
-      <div class="card-body">
-        <div class="row mb-3">
-          <div class="col-md-6 mx-auto">
-            <label class="fontInfo mb-3">Kayıtlı Kartlar</label>
-            <select  name='cardInfosToSaved' class="form-select"  placeholder="My Cards" (change)="getCardInfos($event)">
-              <option [value]="0">Kayıtlı Kartlar</option>
-              <option *ngFor="let card of cards" [value]="card.cardId"> {{card.ownerName}}</option>
-            </select>
-          </div>
+  <div class="card text-center">
+    <div class="card-header" style="background-color: black;color:#00e5ff">
+      Ödeme
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6 mx-auto">
+          <label class="fontInfo mb-3">Kayıtlı Kartlar</label>
+          <select  name='cardInfosToSaved' class="form-select"  placeholder="My Cards" (change)="getCardInfos($event)">
+            <option [value]="0">Kayıtlı Kartlar</option>
+            <option *ngFor="let card of cards" [value]="card.cardId"> {{card.ownerName}}</option>
+          </select>
         </div>
-      
+      </div>
+    
+      <form [formGroup]="paymentForm" class="row g-3">
+        <div class="col-12 mt-3">
+          <label for="inputAddress" class="form-label">Kartın Üstündeki İsim</label>
+          <input type="text" class="form-control" id="customerName" formControlName="ownerName" placeholder="İsim Girin">
+        </div>
+    
+        <div class="col-md-4">
+          <label for="creditCardNumber" class="form-label">Kart Numarası</label>     
+          <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
+            maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
+        </div>
+        <div class="col-md-4">
+          <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
+          <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="5" placeholder="__/__">
+        </div>
+        <div class="col-md-4">
+          <label for="securityCode" class="form-label">Güvenlik Kodu</label>
+          <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
+        </div>
+        <div class="col-12">
+    
+          <div class="alert alert-info" role="alert" *ngIf="totalPrice">
+            Total Price : {{totalPrice}}
+          </div>
+    
         
-        <form [formGroup]="paymentForm" class="row g-3">
-          <div class="col-12 mt-3">
-            <label for="inputAddress" class="form-label">Kartın Üstündeki İsim</label>
-            <input type="text" class="form-control" id="customerName" formControlName="ownerName" placeholder="İsim Girin">
-          </div>
-      
-          <div class="col-md-4">
-            <label for="creditCardNumber" class="form-label">Kart Numarası</label>     
-            <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
-              maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
-          </div>
-          <div class="col-md-4">
-            <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
-            <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="5" placeholder="__/__">
-          </div>
-          <div class="col-md-4">
-            <label for="securityCode" class="form-label">Güvenlik Kodu</label>
-            <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
-          </div>
-          <div class="col-12">
-      
-            <div class="alert alert-info" role="alert" *ngIf="totalPrice">
-              Total Price : {{totalPrice}}
-            </div>
-      
-          
-          </div>
-          <div class="col-12 d-flex justify-content-end">
-            <button type="submit" class="btn btn-dark" style="color:#77d0d9" (click)="addPayment()" routerLink="/cars">Ödeme Yap</button>
-          </div>
-        </form>
-      </div>
-        <div class="col-12">  <label class="form-check-label col-md-9" >Kartı Kaydetmek İster misiniz?</label></div>
-        <div class="form-check form-group form-switch offset-6">
-         
-          <input class="form-check-input col-md-3" type="checkbox" id="flexSwitchCheckChecked" [(ngModel)]='checked' (ngModelChange)="changeEvent()">
-       
         </div>
-      </div>
+        <div class="col-12 d-flex justify-content-end">
+          <button type="submit" class="btn btn-dark" style="color:#00e5ff" (click)="addPayment()" routerLink="/cars">Ödeme Yap</button>
+        </div>
+      </form>
+      <div class="col-12">  <label class="form-check-label col-md-9" >Kartı Kaydetmek İster misiniz?</label></div>
+      <div class="form-check form-group form-switch offset-6">
+       
+        <input class="form-check-input col-md-3" type="checkbox" id="flexSwitchCheckChecked" [(ngModel)]='checked' (ngModelChange)="changeEvent()">
      
       </div>
-      <div class="card-footer text-center" style="background-color: black; color:#77d0d9">
-       Kodlama.io
-      </div>
     </div>
+   
+    </div>
+    <div class="card-footer text-center" style="background-color: black; color:#00e5ff">
+     Kodlama.io
+    </div>
+  </div>

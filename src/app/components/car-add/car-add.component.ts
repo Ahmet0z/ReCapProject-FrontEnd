@@ -40,21 +40,20 @@ export class CarAddComponent implements OnInit {
       carName:["",Validators.required],
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
-      description:["",Validators.required]
+      description:["",Validators.required],
+      findeks:["",Validators.required]
     })
   }
 
   getAllColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
-      console.log(this.colors);
     });
   }
 
   getAllBrands() {
     this.brandService.getBrands().subscribe((response) => {
       this.brands = response.data;
-      console.log(this.brands);
     });
   }
 
@@ -72,9 +71,11 @@ export class CarAddComponent implements OnInit {
     if(this.carAddForm.valid){
       let carModel = Object.assign({}, this.carAddForm.value)
       this.carService.add(carModel).subscribe(response=>{
+        setTimeout(() => { 
+          window.location.reload();      
+        }, 1000);
         this.toastrService.success(response.message,"Başarılı")
       },responsError=>{
-        console.log(responsError.error.Errors)
         for (let i = 0; i < responsError.error.Errors.length; i++) {
           this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
         }

@@ -1,4 +1,4 @@
-<body class="text-center">
+<body class="text-center" style="background-color: rgb(37,37, 41);">
     <main class="form-signin">
       <form [formGroup]="loginForm">
         <h1 class="h3 mb-3 fw-normal">Giriş Yapınız</h1>
@@ -24,11 +24,6 @@
           <label for="floatingPassword">Şifre</label>
         </div>
   
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Beni Hatırla
-          </label>
-        </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login()">
           Giriş Yap
         </button>

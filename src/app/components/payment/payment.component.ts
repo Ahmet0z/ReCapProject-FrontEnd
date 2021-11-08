@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Card } from 'src/app/models/card';
 import { Payment } from 'src/app/models/payment';
 import { Rental } from 'src/app/models/rental';
+import { AuthService } from 'src/app/services/auth.service';
 import { CardService } from 'src/app/services/card.service';
 
 import { PaymentService } from '../../services/payment.service';
@@ -35,6 +36,7 @@ export class PaymentComponent implements OnInit {
     private rentalService:RentalService,
     private toasterService:ToastrService,
     private formBuilder:FormBuilder,
+    private authService:AuthService,
     private cardService:CardService,
     private router:Router) { }
 
@@ -46,7 +48,7 @@ export class PaymentComponent implements OnInit {
 
   createPaymentForm(){
     this.paymentForm = this.formBuilder.group({
-      customerId:1,
+      customerId:[this.authService.user.customerId],
       ownerName:['',Validators.required],
       creditCardNumber:['',Validators.required],
       price:this.paymentService.totalPrice,
@@ -63,7 +65,7 @@ export class PaymentComponent implements OnInit {
 
 setCardModel(){
   this.paymentService.cardModel=<Card>{
-      customerId : 1,
+      customerId : this.authService.user.customerId,
       debts :this.paymentService.totalPrice,
       ownerName :this.paymentForm.controls["ownerName"].value,
       creditCardNumber : this.paymentForm.controls["creditCardNumber"].value,
@@ -73,10 +75,11 @@ setCardModel(){
   }
 }
 
+
   addPayment(){
-    this.setCardModel()
     this.setPayment()
-    this.paymentService.addRentalAfterPaymentAndCardInfoCompleted()
+    this.setCardModel()
+    this.paymentService.addRentalAfterPaymentAndCardInfoCompleted();
     
   }
 
@@ -89,6 +92,8 @@ setCardModel(){
     }
 
   }
+
+  
 
   goToPayment(){
     console.log(this.state)
@@ -103,8 +108,10 @@ setCardModel(){
 
   }
 
+
   getCardsByCustomer(){
-    this.cardService.getByCustomerId(1).subscribe(response=>{
+    console.log(this.authService.user.customerId)
+    this.cardService.getByCustomerId(this.authService.user.customerId).subscribe(response=>{
       this.cards = response.data
      console.log(response)
     })
@@ -116,4 +123,5 @@ setCardModel(){
     this.paymentForm.patchValue(this.currentCard)
 
   }
+
 }

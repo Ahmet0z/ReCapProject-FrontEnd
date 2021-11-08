@@ -1,3 +1,9 @@
 li{
-    list-style-type: none;
+    list-style-type: none ;    
 }
+
+input{
+    background-color: white;
+    border-color: lightgray;
+}
+

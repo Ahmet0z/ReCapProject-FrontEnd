@@ -10,13 +10,13 @@ import { NaviComponent } from './components/navi/navi.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { BrandPipePipe } from './pipes/brand-pipe.pipe';
 import { CardetailPipePipe } from './pipes/cardetail-pipe.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserComponent } from './components/admin/user/user.component';
 import { InformationComponent } from './components/information/information.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
 
 
 
@@ -57,6 +58,7 @@ export function tokenGetter() {
     RegisterComponent,
     UserComponent,
     InformationComponent,
+    ImageAddComponent,
   ],
   imports: [
     ToastrModule.forRoot({

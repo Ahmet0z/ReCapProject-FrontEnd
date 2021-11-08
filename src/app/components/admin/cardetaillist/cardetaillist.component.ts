@@ -109,14 +109,14 @@ export class CardetaillistComponent implements OnInit {
       console.log(brandModel);
       this.brandService.updateBrand(brandModel).subscribe(
         (response) => {
-          this.toastrService.success(response.message, 'güncellendi');
+          this.toastrService.success(response.message, 'Güncellendi');
           setTimeout(() => {
             window.location.reload();
           }, 1000);
           
         },
         (responseError) => {
-          this.toastrService.error('güncellenemedi');
+          this.toastrService.error('Güncellenemedi');
         }
       );
     }
@@ -134,7 +134,7 @@ export class CardetaillistComponent implements OnInit {
         
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'Marka silinemedi');
+        this.toastrService.error(responseError.errors, 'Marka Silinemedi');
       }
     );
   }
@@ -160,14 +160,14 @@ export class CardetaillistComponent implements OnInit {
       this.colorService.updateColor(colorModel).subscribe(
         (response) => {
           
-          this.toastrService.success(response.message, 'güncellendi');
+          this.toastrService.success(response.message, 'Güncellendi');
           setTimeout(() => {
             window.location.reload();
           }, 1000);
           
         },
         (responseError) => {
-          this.toastrService.error('güncellenemedi');
+          this.toastrService.error('Güncellenemedi');
         }
       );
     }
@@ -176,14 +176,14 @@ export class CardetaillistComponent implements OnInit {
   removeColor(color: Color) {
     this.colorService.deleteColor(color).subscribe(
       (response) => {
-        this.toastrService.success('silindi');
+        this.toastrService.success('Silindi');
         setTimeout(() => {
           window.location.reload();
         }, 1000);
         
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'renk silinemedi');
+        this.toastrService.error(responseError.errors, 'Renk Silinemedi');
       }
     );
   }
@@ -217,14 +217,14 @@ export class CardetaillistComponent implements OnInit {
        this.carService.updateCar(carModel).subscribe(response=>{
          console.log(response)
         
-         this.toastrService.success(response.message,"güncellendi");
+         this.toastrService.success(response.message,"Güncellendi");
          setTimeout(() => {
           window.location.reload();
         }, 1000);
          
        },responseError=>{
          console.log(responseError)
-         this.toastrService.error("güncellenmedi");
+         this.toastrService.error("Güncellenmedi");
        }
        )
     }
@@ -233,14 +233,14 @@ export class CardetaillistComponent implements OnInit {
   removeCar(car: Car) {
     this.carService.deleteCar(car).subscribe(
       (response) => {
-        this.toastrService.success('silindi');
+        this.toastrService.success('Silindi');
         setTimeout(() => {
           window.location.reload();
         }, 1000);
         
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'Arac silinemedi');
+        this.toastrService.error(responseError.errors, 'Arac Silinemedi');
       }
     );
   }

@@ -8,6 +8,8 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
+import { InformationComponent } from './components/information/information.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -30,9 +32,12 @@ const routes: Routes = [
   {path:"brands/add", component:BrandAddComponent, canActivate:[AdminGuard]},
   {path:"colors/add", component:ColorAddComponent, canActivate:[AdminGuard]},
   {path:"cars/add", component:CarAddComponent, canActivate:[AdminGuard]},
+  {path:"image/add", component:ImageAddComponent, canActivate:[AdminGuard]},
   {path:"adminPanel", component:CardetaillistComponent, canActivate:[AdminGuard]},
   {path:"login", component:LoginComponent},
-  {path:"register", component:RegisterComponent}
+  {path:"register", component:RegisterComponent},
+  {path:"aboutUs", component:InformationComponent}
+
 ];
 
 @NgModule({

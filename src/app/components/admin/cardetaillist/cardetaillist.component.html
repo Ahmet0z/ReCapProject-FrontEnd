@@ -3,6 +3,7 @@
       <div class="card">
         <div class="card-header">
             <button type="button" routerLink="/cars/add"  style="float:right;color: rgb(138,43,226);" class="btn btn-outline-dark">Araba ekle</button>
+            <button type="button" routerLink="/image/add"  style="float:right;color: rgb(138,43,226);" class="btn btn-outline-dark">Resim ekle</button>
         </div>
         <div class="card-body">
           <table class="table table-hover">
@@ -34,7 +35,7 @@
                   </button>
                 </td>
                 <td>
-                  <button type="button"   class="btn btn-secondary" (click)="removeCar(car)" >
+                  <button type="button"   class="btn btn-danger" (click)="removeCar(car)" >
                     Sil
                   </button>
                 </td>
@@ -71,7 +72,7 @@
                     </button>
                   </td>
                   <td>
-                    <button type="button" (click)="removeColor(color)"   class="btn btn-secondary">
+                    <button type="button" (click)="removeColor(color)"   class="btn btn-danger">
                       Sil
                     </button>
                   </td>
@@ -104,7 +105,7 @@
                       </button>
                     </td>
                     <td>
-                      <button type="button" (click)="removeBrand(brand)"  class="btn btn-secondary">
+                      <button type="button" (click)="removeBrand(brand)"  class="btn btn-danger">
                         Sil
                       </button>
                     </td>

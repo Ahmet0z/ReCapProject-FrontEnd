@@ -1,44 +1,60 @@
 <div  *ngIf="carforRent?.isRentable">
-  <button style="width: 100%;" type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#rentalModal">
-    Kirala
-    </button>
-</div>
-<div *ngIf="!carforRent?.isRentable">
-  <button style="width: 100%;" type="button" class="btn btn-outline-dark" disabled data-bs-toggle="modal" data-bs-target="#rentalModal">
-    Kirada
-    </button>
-</div>
+    <button style="width: 100%;" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#rentalModal">
+      Kirala
+      </button>
+  </div>
+  <div *ngIf="!carforRent?.isRentable">
+    <button style="width: 100%;" type="button" class="btn btn-danger" disabled data-bs-toggle="modal" data-bs-target="#rentalModal">
+      Kirada
+      </button>
+  </div>      
 
-<div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="rentalModalLabel" aria-hidden="true"  >
-  <div class="modal-dialog">
+  <!-- Modal -->
+  <div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="rentalModalLabel" aria-hidden="true"  >
+    <div class="modal-dialog">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rentalModalLabel">Araç Kiralama</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- Giriş Yapmamışsa -->
+
+      <div class="modal-content" *ngIf="!isAuthenticated()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentalModalLabel">Giriş Yapmanız Gerek</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <button [routerLink]="['/login']" data-bs-dismiss="modal" class="btn btn-outline-dark">Go to login</button>
+        </div>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="row">
-          <div class="form-group" style="margin-bottom: 15px;">
-            <label for="rentDate">Kiralama Tarihi</label>
-            <input [(ngModel)]="rentDate"  type="date" class="form-control" id="rentDate"  min="{{minDate}}" max='{{maxDate}}' name="rentDate" (input)='minDateChange($event)' >
-            <p *ngIf="message" class="text-danger"> {{message}} </p>
-          </div>
-          <div class="form-group" style="margin-bottom: 15px;">
-            <label for="returnDate">Geri Dönüş Tarihi</label>
-            <input [(ngModel)]="returnDate" type="date" class="form-control" id="returnDate" name="returnDate" min='{{minDate}}' max='{{maxDate}}' (input)='totalAmount()'>
-          </div>
-         </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-      
-    <button type="button"  class="btn btn-dark" (click)="payment()" style="float:right">
-      Ödeme Yap
-        </button>
+
+
+
+      <!-- Giriş Yapmışsa -->
+      <div class="modal-content" *ngIf="isAuthenticated()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentalModalLabel">Araç Kiralama</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+            <div class="form-group" style="margin-bottom: 15px;">
+              <label for="rentDate">Kiralama Tarihi</label>
+              <input [(ngModel)]="rentDate"  type="date" class="form-control" id="rentDate"  min="{{minDate}}" max='{{maxDate}}' name="rentDate" (input)='minDateChange($event)' >
+              <p *ngIf="message" class="text-danger"> {{message}} </p>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+              <label for="returnDate">Geri Dönüş Tarihi</label>
+              <input [(ngModel)]="returnDate" type="date" class="form-control" id="returnDate" name="returnDate" min='{{minDate}}' max='{{maxDate}}' (input)='totalAmount()'>
+            </div>
+           </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        
+      <button type="button" class="btn btn-dark" (click)="payment()" style="float:right">
+        Ödeme Yap
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
