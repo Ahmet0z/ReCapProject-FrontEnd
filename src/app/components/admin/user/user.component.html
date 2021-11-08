@@ -40,6 +40,37 @@
           Şifre Güncelle
         </button>
       </div>
-  
+
     </div>
+
+    <div class="col-md-6">
+    <form [formGroup]="cardAddForm">
+
+      <div class="mb-3">
+        <label for="ownerName" class="form-label">Kartın üzerindeki isim</label>
+        <input type="text" class="form-control" id="ownerName" placeholder="Ahmet" formControlName="ownerName" />
+      </div>
+      <div class="mb-3">
+        <label for="creditCardNumber" class="form-label">Kart Numarası</label>     
+        <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
+          maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
+      </div>
+      <div class="row">
+      <div class="col-md-6">
+        <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
+        <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="4" placeholder="__/__" >
+      </div>
+      <div class="col-md-6">
+        <label for="securityCode" class="form-label">Güvenlik Kodu</label>
+        <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
+      </div>
+    </div>
+
+    </form><br>
+    <div class="col-md-6">
+      <button type="button" (click)="addCard()" class="btn btn-outline-info">
+        Kart Ekle
+      </button>
+    </div>
+  </div>
   </div>

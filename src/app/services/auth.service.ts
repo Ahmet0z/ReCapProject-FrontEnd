@@ -105,7 +105,6 @@ export class AuthService {
           customerId: 0,
         };
 
-        this.getCustomerByUser(userId);
       }
     }
     return this.user;
@@ -113,7 +112,7 @@ export class AuthService {
 
   getCustomerByUser(userId: number) {
     this.customerService.getCustomerIdByUserId(userId).subscribe((res) => {
-      this.user.customerId = res.data.customerId;
+      this.user.userId = res.data.userId;
       this.user.companyName = res.data.companyName;
     });
   }

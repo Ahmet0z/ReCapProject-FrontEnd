@@ -48,7 +48,7 @@ export class PaymentComponent implements OnInit {
 
   createPaymentForm(){
     this.paymentForm = this.formBuilder.group({
-      customerId:[this.authService.user.customerId],
+      userId:[this.authService.user.userId],
       ownerName:['',Validators.required],
       creditCardNumber:['',Validators.required],
       price:this.paymentService.totalPrice,
@@ -65,7 +65,7 @@ export class PaymentComponent implements OnInit {
 
 setCardModel(){
   this.paymentService.cardModel=<Card>{
-      customerId : this.authService.user.customerId,
+      userId : this.authService.user.userId,
       debts :this.paymentService.totalPrice,
       ownerName :this.paymentForm.controls["ownerName"].value,
       creditCardNumber : this.paymentForm.controls["creditCardNumber"].value,
