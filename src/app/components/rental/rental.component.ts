@@ -68,7 +68,7 @@ export class RentalComponent implements OnInit {
   payment(){
     let rental:Rental={
       carId:this.carforRent.id,
-      userId:this.authService.user.customerId,
+      userId:this.authService.user.userId,
       rentDate:this.rentDate,
       returnDate:this.returnDate
     }

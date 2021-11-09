@@ -110,8 +110,7 @@ setCardModel(){
 
 
   getCardsByCustomer(){
-    console.log(this.authService.user.customerId)
-    this.cardService.getByCustomerId(this.authService.user.customerId).subscribe(response=>{
+    this.cardService.getByCustomerId(this.authService.user.userId).subscribe(response=>{
       this.cards = response.data
      console.log(response)
     })

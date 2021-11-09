@@ -101,8 +101,6 @@ export class AuthService {
           userName: userName,
           email: emailInfo,
           roles: roles,
-          companyName: '',
-          customerId: 0,
         };
 
       }
@@ -110,11 +108,12 @@ export class AuthService {
     return this.user;
   }
 
-  getCustomerByUser(userId: number) {
-    this.customerService.getCustomerIdByUserId(userId).subscribe((res) => {
-      this.user.userId = res.data.userId;
-      this.user.companyName = res.data.companyName;
-    });
+  getUserById(userId:number){
+    this.userService.getByUserId(userId).subscribe(response=>{
+      this.user.userId = response.data.userId;
+      this.user.userName = response.data.firstName + " " + response.data.lastName;
+      this.user.email = response.data.email;
+    })
   }
 
   logOut(){

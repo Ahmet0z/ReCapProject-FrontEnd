@@ -14,6 +14,7 @@
                 <th scope="col">Renk Numarası</th>
                 <th scope="col">Marka Numarası</th>
                 <th scope="col">Günlük Fiyatı</th>
+                <th scope="col">Model Yılı</th>
                 <th scope="col">Açıklması</th>
                 <th scope="col">Findeks Puanı</th>
                 <th scope="col">Güncelle</th>
@@ -27,6 +28,7 @@
                 <td>{{car.colorId}}</td>
                 <td>{{car.brandId }}</td>
                 <td>{{car.dailyPrice  | currency: "USD":true:"1.2-2" }}</td>
+                <td>{{car.modelYear}}</td>
                 <td>{{car.description}}</td>
                 <td>{{car.findeks}}</td>
                 <td>
@@ -118,9 +120,7 @@
     </div>
   </div>
   
-  
-  
-  <!-- Modal For Brand -->
+    <!-- Modal For Brand -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

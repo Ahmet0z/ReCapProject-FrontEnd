@@ -42,7 +42,7 @@
 
     <div class="card-body" style="background-color: rgb(220, 220, 220); ">
       <h5 class="card-title">{{ cardetail.carName }}</h5>
-      <p class="card-text" style="color:indigo" *ngIf="cardetail.isRentable">Kiralanabilir </p>
+      <p class="card-text" style="color:green" *ngIf="cardetail.isRentable">Kiralanabilir </p>
       <p class="card-text" style="color:red" *ngIf="!cardetail.isRentable">Şu anda başka birisi tarafından kullanılmaktadır </p>
     </div>
     

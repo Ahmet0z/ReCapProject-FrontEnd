@@ -167,6 +167,7 @@ export class CardetaillistComponent implements OnInit {
           
         },
         (responseError) => {
+          console.log(responseError)
           this.toastrService.error('Güncellenemedi');
         }
       );
@@ -199,7 +200,7 @@ export class CardetaillistComponent implements OnInit {
 
   createCarforUpdateForm(){
     this.carUpdateForm = this.formBuilder.group({
-     carId:[''],
+     carId: [''],
      brandId:[''],
      colorId:[''],
      carName:['',Validators.required],
@@ -213,6 +214,8 @@ export class CardetaillistComponent implements OnInit {
   updateCar(){
     if(this.carUpdateForm.valid){
       let carModel = Object.assign({},this.carUpdateForm.value);
+      console.log(this.carUpdateForm.value)
+
      
        this.carService.updateCar(carModel).subscribe(response=>{
          console.log(response)
