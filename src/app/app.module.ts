@@ -30,12 +30,14 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { UserComponent } from './components/admin/user/user.component';
 import { InformationComponent } from './components/information/information.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +61,7 @@ export function tokenGetter() {
     UserComponent,
     InformationComponent,
     ImageAddComponent,
+    FooterComponent,
   ],
   imports: [
     ToastrModule.forRoot({

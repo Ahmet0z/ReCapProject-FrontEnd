@@ -1,23 +1,28 @@
-
-<h4 class="mt-3" >ARAÇ LİSTESİ</h4>
+<div class="row">
+  <div class="col-md-3">
+    <app-color></app-color>
+    <app-brand></app-brand>
+  </div>
+  <div class="col-md-9">
+    <h4 class="mt-3" >ARAÇ LİSTESİ</h4>
 
 <div class="content">
   <form class="d-flex md-auto">
-    <input style="width: 91%;" class="form-control me-2" type="text" placeholder="Arama ifadesi giriniz.."
+    <input style="width: 91%; background-color: lightgray; box-shadow: darkgray;" class="form-control me-2" type="text" placeholder="Arama ifadesi giriniz.."
       aria-label="Organik Arama" [(ngModel)]="cardetailFilter" [ngModelOptions]="{ standalone: true }" />
   </form>
 </div>
 <br>
 <div class="row">
   <div class="col-md-4">
-    <select [(ngModel)]="brandFilter" class="form-select" aria-placeholder="Marka Seçiniz">
+    <select [(ngModel)]="brandFilter" class="form-select" aria-placeholder="Marka Seçiniz" style="background-color: lightgray; box-shadow: darkgray;">
       <option value=0>Marka Seç</option>
       <option *ngFor="let brand of brands" [value]="brand.brandId" [selected]="getSelectedBrand(brand.brandId)">
         {{brand.brandName}}</option>
     </select>
   </div>
   <div class="col-md-4">
-    <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+    <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example" style="background-color: lightgray; box-shadow: darkgray;">
       <option value=0>Renk Seç</option>
       <option *ngFor="let color of colors" [value]="color.colorId" [selected]="getSelectedColor(color.colorId)">
         {{color.colorName}}</option>
@@ -25,7 +30,7 @@
   </div>
   <div class="col-md-3">
     <button routerLink="/cars/brand/{{brandFilter}}/color/{{colorFilter}}" style="width: 100%;" type="button"
-      class="btn btn-light">
+      class="btn btn-warning">
       Filtre
     </button>
   </div>
@@ -61,13 +66,12 @@
       <div class="row">
         <button type="button" routerLink="/cars/details/{{cardetail.id}}"
           class="btn btn-outline-dark">Araba Detay</button>
-
+          
       </div>
     </div>
 </div> 
-
-
-
+  </div>
+</div>
 
 
 

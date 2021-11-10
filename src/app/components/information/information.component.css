@@ -2,4 +2,6 @@ li{
     width: fit-content;
     background-color: rgb(37, 37, 41);
     color: white;
+    border-style: none;
 }
+
