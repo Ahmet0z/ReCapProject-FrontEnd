@@ -1,4 +1,4 @@
-This project is an online car rental project for <a href="https://www.kodlama.io/" target="_blank">kodlama.io</a> online course program of Engin Demirog and his team.
+This project is an online car rental project for <a href="https://www.kodlama.io/" target="_blank">kodlama.io</a> online course program of Engin Demirog.
 
 <h1>Tecnologies</h1>
 <ul>
