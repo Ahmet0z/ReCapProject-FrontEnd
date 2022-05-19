@@ -10,7 +10,7 @@ This project is an online car rental project for <a href="https://www.kodlama.io
 
   <li>Jquery</li>
 </ul>
-<h1>FrontendTechniques</h1>
+<h1>Frontend Techniques</h1>
 <ul>
   <li>Pipe</li>
 
