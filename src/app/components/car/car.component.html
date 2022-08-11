@@ -29,7 +29,7 @@
     </select>
   </div>
   <div class="col-md-3">
-    <button routerLink="/cars/brand/{{brandFilter}}/color/{{colorFilter}}" style="width: 100%;" type="button"
+    <button  (click)="getCarDetailByColorAndBrand( colorFilter,brandFilter )" style="width: 100%;" type="button"
       class="btn btn-warning">
       Filtre
     </button>

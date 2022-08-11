@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
         this.toastrService.success(response.message,"Başarılı")
       },responseError=>{
         console.log(responseError.error.Errors)
-          for (let i = 0; i < responseError.error.Errors.length; i++) {
+          for (let i = 0; i < responseError.error.Errors; i++) {
             this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Hata!")
           }  
       })
