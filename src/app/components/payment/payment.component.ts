@@ -112,13 +112,11 @@ setCardModel(){
   getCardsByCustomer(){
     this.cardService.getByCustomerId(this.authService.user.userId).subscribe(response=>{
       this.cards = response.data
-     console.log(response)
     })
   }
 
   getCardInfos(e:any){
     this.currentCard = this.cards.filter(x=> x.cardId == e.target.value)[0]
-    console.log(e.target.value)
     this.paymentForm.patchValue(this.currentCard)
 
   }

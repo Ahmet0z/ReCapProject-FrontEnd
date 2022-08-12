@@ -36,12 +36,11 @@ export class PaymentService {
   }
 
   addRentalAfterPaymentAndCardInfoCompleted() {
-    console.log(this.cardSavedRequest)
     if (this.cardSavedRequest === true) {
       this.cardService.add(this.cardModel).subscribe(response => {
         this.addPayment(this.payment).subscribe(response => {
           this.carRentalService.addRental(this.rentals).subscribe(response => {
-            this.toastrService.success('Success.');
+            this.toastrService.success('Payment Success.');
             this.router.navigate(["/cardetails"])
 
           }, responseError => {
@@ -55,15 +54,12 @@ export class PaymentService {
       console.log(this.payment)
       this.addPayment(this.payment).subscribe(response => {
         this.carRentalService.addRental(this.rentals).subscribe(response => {
-          this.toastrService.success('Success.');
+          this.toastrService.success('Payment Success.');
           this.router.navigate(["/cardetails"])
-          this.toastrService.success("Ödeme başarılı")
         }, responseError => {
           this.toastrService.error(responseError.errors, 'You do not have enough Findex points to rent this car.');
         });
       })
     }
   } 
-
-  
 }
