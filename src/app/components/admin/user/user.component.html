@@ -1,76 +1,143 @@
-<div class="row mt-3">
-    <div class="col-md-6">
-      <form [formGroup]="updateUserForm">
-        <div class="mb-3">
-          <label for="firstName" class="form-label">Ad</label>
-          <input type="text" class="form-control" id="firstName" placeholder="Adınızı girin" formControlName="firstName" />
-        </div>
-        <div class="mb-3">
-          <label for="lastName" class="form-label">Soyad</label>
-          <input type="text" class="form-control" id="lastName" placeholder="Soy isim girin" formControlName="lastName" />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Adresi</label>
-          <input type="text" class="form-control" id="email" placeholder="example@example.com" formControlName="email" />
-        </div>    
-      </form>
-      <div class="col-md-6">
-        <button type="button" (click)="updateUser()" class="btn btn-outline-info">
-          Kullanıcı Güncelle
-        </button>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <form [formGroup]="updatePasswordForm">
-        <div class="mb-3">
-          <label for="eMail" class="form-label">Email Adresi</label>
-          <input type="eMail" class="form-control" id="eMail" placeholder="example@example.com" formControlName="email" />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label"> Eski Şifre</label>
-          <input type="password" class="form-control" id="oldPassword" placeholder="*****" formControlName="oldPassword" />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label"> Şifre</label>
-          <input type="password" class="form-control" id="newPassword" placeholder="*****" formControlName="newPassword" />
-        </div>   
-      </form>
-      <div class="col-md-6">
-        <button type="button" (click)="updatePassword()" class="btn btn-outline-info">
-          Şifre Güncelle
-        </button>
-      </div>
+<div class="col-md-2">
+  <!--Update User-->
+  <div class="row">
+    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#updateUserModal">
+      Kullanıcı Güncelle
+    </button>
+  </div>
 
-    </div>
+  <!--Update Password-->
+  <div class="row">
+    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#passwordUpdateModal">
+      Şifre Güncelle
+    </button>  </div>
 
-    <div class="col-md-6">
-    <form [formGroup]="cardAddForm">
+  <!--Add Card-->
+  <div class="row">
+    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#cardAddModal">
+      Kart Ekle
+    </button>  
+  </div>
 
-      <div class="mb-3">
-        <label for="ownerName" class="form-label">Kartın üzerindeki isim</label>
-        <input type="text" class="form-control" id="ownerName" placeholder="Ahmet" formControlName="ownerName" />
-      </div>
-      <div class="mb-3">
-        <label for="creditCardNumber" class="form-label">Kart Numarası</label>     
-        <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
-          maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
-      </div>
-      <div class="row">
-      <div class="col-md-6">
-        <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
-        <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="4" placeholder="__/__" >
-      </div>
-      <div class="col-md-6">
-        <label for="securityCode" class="form-label">Güvenlik Kodu</label>
-        <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
-      </div>
-    </div>
+</div>
 
-    </form><br>
-    <div class="col-md-6">
-      <button type="button" (click)="addCard()" class="btn btn-outline-info">
-        Kart Ekle
-      </button>
+
+  <!-- Update User Modal -->
+  <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header"><h5 class="title">Kullanıcı Güncelle</h5></div>
+              <div class="card-body">
+                <form [formGroup]="updateUserForm">
+                  <div class="mb-3">
+                    <h6 for="firstName" class="form-label">Ad</h6>
+                    <input type="text" class="form-control" id="firstName" placeholder="Adınızı girin" formControlName="firstName" />
+                  </div>
+                  <div class="mb-3">
+                    <h6 for="lastName" class="form-label">Soyad</h6>
+                    <input type="text" class="form-control" id="lastName" placeholder="Soy isim girin" formControlName="lastName" />
+                  </div>
+                  <div class="mb-3">
+                    <h6 for="email" class="form-label">Email Adresi</h6>
+                    <input type="text" class="form-control" id="email" placeholder="example@example.com" formControlName="email" />
+                  </div>    
+                </form>
+                <div class="col-md-6">
+                  <button type="button" (click)="updateUser()" class="btn btn-outline-info">
+                    Kullanıcı Güncelle
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+
+
+<!-- Update Password Modal -->
+<div class="modal fade" id="passwordUpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header"><h5 class="title">Şifre Güncelle</h5></div>
+            <div class="card-body">
+              <form [formGroup]="updatePasswordForm">
+                <div class="mb-3">
+                  <h6 for="eMail" class="form-label">Email Adresi</h6>
+                  <input type="eMail" class="form-control" id="eMail" placeholder="example@example.com" value="" formControlName="email" />
+                </div>
+                <div class="mb-3">
+                  <h6 for="password" class="form-label"> Eski Şifre</h6>
+                  <input type="password" class="form-control" id="oldPassword" placeholder="*****" formControlName="oldPassword" />
+                </div>
+                <div class="mb-3">
+                  <h6 for="password" class="form-label"> Şifre</h6>
+                  <input type="password" class="form-control" id="newPassword" placeholder="*****" formControlName="newPassword" />
+                </div>   
+              </form>
+              <div class="col-md-6">
+                <button type="button" (click)="updatePassword()" class="btn btn-outline-info">
+                  Şifre Güncelle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+
+<!-- Add Card Modal -->
+<div class="modal fade" id="cardAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header"><h5 class="title">Kart Ekle</h5></div>
+            <div class="card-body">
+              <form [formGroup]="cardAddForm">
+
+                <div class="mb-3">
+                  <h6 for="ownerName" class="form-label">Kartın üzerindeki isim</h6>
+                  <input type="text" class="form-control" id="ownerName" placeholder="Name" formControlName="ownerName" />
+                </div>
+                <div class="mb-3">
+                  <h6 for="creditCardNumber" class="form-label">Kart Numarası</h6>     
+                  <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
+                    maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
+                </div>
+                <div class="row">
+                <div class="col-md-6">
+                  <h6 for="expirationDate" class="form-label">Son Kullanma Tarihi</h6>
+                  <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="4" placeholder="__/__" >
+                </div>
+                <div class="col-md-6">
+                  <h6 for="securityCode" class="form-label">Güvenlik Kodu</h6>
+                  <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
+                </div>
+              </div>
+          
+              </form><br>
+              <div class="col-md-6">
+                <button type="button" (click)="addCard()" class="btn btn-outline-info">
+                  Kart Ekle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

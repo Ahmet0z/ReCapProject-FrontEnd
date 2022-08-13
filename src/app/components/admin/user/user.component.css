@@ -16,3 +16,13 @@ label{
 button{
     margin-bottom: 20px;
 }
+
+.redButton{
+    color:#ffffff;
+    background-color: rgb(112, 0, 0);
+    border-color: rgb(112, 0, 0);
+}
+.redButton:hover{
+    background-color: rgb(87, 45, 45);
+    border-color: rgb(87, 45, 45);
+}
