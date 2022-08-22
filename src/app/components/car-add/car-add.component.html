@@ -24,12 +24,12 @@
             </div>
 
             <div class="col-md-6">
-              <label
-                for="Marka"
-                class="col-sm-2 col-form-label col-form-label-sm"
-                >Marka</label
+              <label for="Marka" class="col-sm-2 col-form-label col-form-label-sm">Marka</label>
+              <select
+                formControlName="brandId"
+                class="form-select"
+                aria-placeholder="Marka Seçiniz"
               >
-              <select formControlName="brandId" class="form-select" aria-placeholder="Marka Seçiniz">
                 <option [ngValue]="0">Marka Seç</option>
                 <option [ngValue]="brand.brandId" *ngFor="let brand of brands">
                   {{ brand.brandName }}
