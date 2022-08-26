@@ -31,6 +31,9 @@ import { UserComponent } from './components/admin/user/user.component';
 import { InformationComponent } from './components/information/information.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { CardAddComponent } from './components/card-add/card-add.component';
 
 
 
@@ -62,6 +65,9 @@ export function tokenGetter() {
     InformationComponent,
     ImageAddComponent,
     FooterComponent,
+    UpdateUserComponent,
+    UpdatePasswordComponent,
+    CardAddComponent,
   ],
   imports: [
     ToastrModule.forRoot({

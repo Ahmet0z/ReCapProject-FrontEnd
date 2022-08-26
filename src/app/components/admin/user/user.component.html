@@ -1,101 +1,44 @@
-<div class="col-md-2">
-  <!--Update User-->
-  <div class="row">
-    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#updateUserModal">
-      Kullanıcı Güncelle
-    </button>
-  </div>
-
-  <!--Update Password-->
-  <div class="row">
-    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#passwordUpdateModal">
-      Şifre Güncelle
-    </button>  </div>
-
-  <!--Add Card-->
-  <div class="row">
-    <button type="button"  class="btn btn-light redButton" data-bs-toggle="modal" data-bs-target="#cardAddModal">
-      Kart Ekle
-    </button>  
-  </div>
-
-</div>
-
-
-  <!-- Update User Modal -->
-  <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header"><h5 class="title">Kullanıcı Güncelle</h5></div>
-              <div class="card-body">
-                <form [formGroup]="updateUserForm">
-                  <div class="mb-3">
-                    <h6 for="firstName" class="form-label">Ad</h6>
-                    <input type="text" class="form-control" id="firstName" placeholder="Adınızı girin" formControlName="firstName" />
-                  </div>
-                  <div class="mb-3">
-                    <h6 for="lastName" class="form-label">Soyad</h6>
-                    <input type="text" class="form-control" id="lastName" placeholder="Soy isim girin" formControlName="lastName" />
-                  </div>
-                  <div class="mb-3">
-                    <h6 for="email" class="form-label">Email Adresi</h6>
-                    <input type="text" class="form-control" id="email" placeholder="example@example.com" formControlName="email" />
-                  </div>    
-                </form>
-                <div class="col-md-6">
-                  <button type="button" (click)="updateUser()" class="btn btn-outline-info">
-                    Kullanıcı Güncelle
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="row">
+  <div class="col-md-2">
+    <!--Update User-->
+    <div class="row">
+      <button type="button"  class="btn btn-light redButton"  (click)="userToUpdate();">
+        Kullanıcı Güncelle
+      </button>
     </div>
+
+    <!--Update Password-->
+    <div class="row">
+      <button type="button"  class="btn btn-light redButton"  (click)="passwordToChange()">
+        Şifre Güncelle
+      </button>  </div>
+
+    <!--Add Card-->
+    <div class="row">
+      <button type="button"  class="btn btn-light redButton"  (click)="cardToAdd()">
+        Kart Ekle
+      </button>  
+    </div>  
   </div>
 
+  <div class="col-md-1"></div>
 
+  <div class="col-md-8" style="color:white ;">
 
-<!-- Update Password Modal -->
-<div class="modal fade" id="passwordUpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header"><h5 class="title">Şifre Güncelle</h5></div>
-            <div class="card-body">
-              <form [formGroup]="updatePasswordForm">
-                <div class="mb-3">
-                  <h6 for="eMail" class="form-label">Email Adresi</h6>
-                  <input type="eMail" class="form-control" id="eMail" placeholder="example@example.com" value="" formControlName="email" />
-                </div>
-                <div class="mb-3">
-                  <h6 for="password" class="form-label"> Eski Şifre</h6>
-                  <input type="password" class="form-control" id="oldPassword" placeholder="*****" formControlName="oldPassword" />
-                </div>
-                <div class="mb-3">
-                  <h6 for="password" class="form-label"> Şifre</h6>
-                  <input type="password" class="form-control" id="newPassword" placeholder="*****" formControlName="newPassword" />
-                </div>   
-              </form>
-              <div class="col-md-6">
-                <button type="button" (click)="updatePassword()" class="btn btn-outline-info">
-                  Şifre Güncelle
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div *ngIf="userUpdate">
+      <app-update-user></app-update-user>
     </div>
+
+    <div *ngIf="passwordChange">
+      <app-update-password></app-update-password>
+    </div>
+
+    <div *ngIf="cardAdd"> 
+      <app-card-add></app-card-add> 
+    </div>
+
   </div>
 </div>
-
 
 <!-- Add Card Modal -->
 <div class="modal fade" id="cardAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
