@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-            <button type="button" routerLink="/cars/add"  style="float:right;color: rgb(138,43,226);" class="btn btn-outline-dark">Araba ekle</button>
+            <button type="button" routerLink="/cars/add"  style="float:right;color: rgb(138,43,226);" class="btn btn-outline-dark ml-1">Araba ekle</button>
             <button type="button" routerLink="/image/add"  style="float:right;color: rgb(138,43,226);" class="btn btn-outline-dark">Resim ekle</button>
         </div>
         <div class="card-body">
@@ -27,7 +27,7 @@
                 <td>{{car.carName}}</td>
                 <td>{{car.colorId}}</td>
                 <td>{{car.brandId }}</td>
-                <td>{{car.dailyPrice  | currency: "USD":true:"1.2-2" }}</td>
+                <td>{{car.dailyPrice  | currency: "TRY":true:"1.2-2" }}</td>
                 <td>{{car.modelYear}}</td>
                 <td>{{car.description}}</td>
                 <td>{{car.findeks}}</td>
@@ -49,8 +49,10 @@
     </div>
   </div>
   <br>
+
   <div class="content">
       <div class="row">
+
       <div class="col-md-6">
         <div class="card">
           <div class="card-header"><button type="button" routerLink="/colors/add"  style="float:right;color:rgb(138,43,226)" class="btn btn-outline-dark">Renk ekle</button></div>
@@ -84,6 +86,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-6">
           <div class="card">
             <div class="card-header"><button type="button"  routerLink="/brands/add"  style="float:right;color: rgb(138,43,226)" class="btn btn-outline-dark">Marka ekle</button></div>
@@ -91,7 +94,6 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    
                     <th scope="col">Marka Adı</th>
                     <th scope="col">Güncelle</th>
                     <th scope="col">Sil</th>
