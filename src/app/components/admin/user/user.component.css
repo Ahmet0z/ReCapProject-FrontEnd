@@ -14,7 +14,7 @@ label{
 }
 
 button{
-    margin-bottom: 20px;
+    margin-bottom: 5%;
 }
 
 .redButton{
@@ -23,6 +23,6 @@ button{
     border-color: rgb(112, 0, 0);
 }
 .redButton:hover{
-    background-color: rgb(87, 45, 45);
-    border-color: rgb(87, 45, 45);
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
 }

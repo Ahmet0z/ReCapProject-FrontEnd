@@ -1,6 +1,5 @@
-
 <div>
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;" >
+<div class="card mb-3 white-bg" style="max-width: 18rem;" >
   <div class="card-header"><label for="colorFilter" class="form-label">Model Ara</label>
     <input
      type="text"
@@ -12,7 +11,7 @@
   </div>
 <ul class="list-group" >
       <li *ngFor="let brand of brands | brandPipe:brandFilter"> 
-        <a routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-action list-group-item-dark">{{brand.brandName}}</a>
+        <a routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-action">{{brand.brandName}}</a>
       </li>
   </ul>
 </div>

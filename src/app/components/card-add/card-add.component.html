@@ -10,7 +10,7 @@
         <input id="creditCardNumber" type="tel" formControlName="creditCardNumber" class="form-control"
           maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx">
       </div>
-      <div class="row">
+      <div class="row mb-3">
       <div class="col-md-6">
         <label for="expirationDate" class="form-label">Son Kullanma Tarihi</label>
         <input type="text" formControlName="expirationDate" class="form-control" id="expirationDate" maxlength="4" placeholder="__/__" >
@@ -20,7 +20,7 @@
         <input type="text" class="form-control" formControlName="securityCode" id="securityCode" maxlength="3" placeholder="___">
       </div>
       </div>
-    </form><br>
+    </form>
     <div class="col-md-6">
       <button type="button" (click)="addCard()" class="btn btn-outline-info redButton">
         Kart Ekle
