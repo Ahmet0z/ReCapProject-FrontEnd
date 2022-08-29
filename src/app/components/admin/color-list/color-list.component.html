@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-2">
+        <app-main></app-main>
+    </div>
+    <div class="col-md-10">
+        <div class="card">
+        <div class="card-header"><button type="button" routerLink="/colors/add"  style="float:right;color:rgb(138,43,226)" class="btn btn-outline-dark">Renk ekle</button></div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        
+                        <th scope="col">Renk Adı</th>
+                        <th scope="col">Güncelle</th>
+                        <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let color of colors">
+                        
+                        <td>{{color.colorName}}</td>
+                        <td>
+                            <button type="button" (click)="getColor(color)"    class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1" >
+                            Güncelle
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" (click)="removeColor(color)"   class="btn btn-danger">
+                            Sil
+                            </button>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal For Color -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header"><h5 class="title">Renk Güncelle</h5></div>
+                  <div class="card-body">
+                    <form  [formGroup]="colorUpdateForm">
+                        <div class="form-group">
+                          <label for="colorName" class="col-sm-2 col-form-label col-form-label-sm">Renk Adı</label>
+                        <input type="hidden" formControlName="colorId"/>
+                         <input type="text"
+                          id="colorName" 
+                         formControlName="colorName"
+                         class="form-control"
+                         placeholder="Renk Adı"/>  
+                        </div>
+                        <br>
+                        <button style="float:right;" type="button" (click)="updateColor()"class="btn btn-outline-dark">Güncelle </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

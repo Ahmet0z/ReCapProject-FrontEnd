@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrandListComponent } from './components/admin/brand-list/brand-list.component';
 import { CardetaillistComponent } from './components/admin/cardetaillist/cardetaillist.component';
+import { ColorListComponent } from './components/admin/color-list/color-list.component';
+import { MainComponent } from './components/admin/main/main.component';
 import { UserComponent } from './components/admin/user/user.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -33,7 +36,10 @@ const routes: Routes = [
   {path:"colors/add", component:ColorAddComponent, canActivate:[AdminGuard]},
   {path:"cars/add", component:CarAddComponent, canActivate:[AdminGuard]},
   {path:"image/add", component:ImageAddComponent, canActivate:[AdminGuard]},
-  {path:"adminPanel", component:CardetaillistComponent, canActivate:[AdminGuard]},
+  {path:"adminPanel", component:MainComponent, canActivate:[AdminGuard]},
+  {path:"cardetaillist", component:CardetaillistComponent, canActivate:[AdminGuard]},
+  {path:"colorlist",component:ColorListComponent, canActivate:[AdminGuard]},
+  {path:"brandlist",component:BrandListComponent, canActivate:[AdminGuard]},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"aboutUs", component:InformationComponent}

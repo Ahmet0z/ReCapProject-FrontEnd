@@ -34,6 +34,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { CardAddComponent } from './components/card-add/card-add.component';
+import { MainComponent } from './components/admin/main/main.component';
+import { BrandListComponent } from './components/admin/brand-list/brand-list.component';
+import { ColorListComponent } from './components/admin/color-list/color-list.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 
 
 
@@ -68,6 +72,10 @@ export function tokenGetter() {
     UpdateUserComponent,
     UpdatePasswordComponent,
     CardAddComponent,
+    MainComponent,
+    BrandListComponent,
+    ColorListComponent,
+    UserListComponent,
   ],
   imports: [
     ToastrModule.forRoot({
