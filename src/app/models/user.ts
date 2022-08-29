@@ -1,6 +1,7 @@
 export interface User{
-    userId:number;
-    userName:string;
+    id:number;
+    firstName:string
+    lastName:string
     email:string;
     roles?:string[];
 }

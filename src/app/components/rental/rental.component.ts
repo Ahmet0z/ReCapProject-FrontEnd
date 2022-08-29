@@ -43,7 +43,7 @@ export class RentalComponent implements OnInit {
    createNewRental(){
     let rental:Rental={
       carId:this.carforRent.id,
-      userId:this.authService.user.userId,
+      userId:this.authService.user.id,
       rentDate:this.rentDate,
       returnDate:this.returnDate
     }
@@ -68,7 +68,7 @@ export class RentalComponent implements OnInit {
   payment(){
     let rental:Rental={
       carId:this.carforRent.id,
-      userId:this.authService.user.userId,
+      userId:this.authService.user.id,
       rentDate:this.rentDate,
       returnDate:this.returnDate
     }

@@ -1,1 +1,67 @@
-<p>user-list works!</p>
+<div class="row">
+    <div class="col-md-2">
+        <app-main></app-main>
+    </div>
+    <div class="col-md-10">
+        <div class="card">
+        <div class="card-header"></div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Adı</th>
+                        <th scope="col">Soyadı</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rolleri</th>
+                        <th scope="col">Yeni Rol Ekle</th>
+                        <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                        
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+
+                        <td><button type="button" class="btn btn-outline-dark" (click)="getUserRoles(user.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">Roller</button></td>
+                        <td><button class="btn btn-warning">Rol Ver</button></td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal For Roles-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header"><h5 class="title">Kullanıcı Rolleri</h5></div>
+              <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Rol Adı</th>
+                            <th>Rol Kaldır</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let role of userRoles">
+                            <td>{{role.name}}</td>
+                            <td><button class="btn btn-danger" (click)="deleteUserRole(role)">Sil</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

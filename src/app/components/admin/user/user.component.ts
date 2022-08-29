@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service'; 
 import { UserService } from 'src/app/services/user.service';
-import jwtDecode from 'jwt-decode';
-import { User } from 'src/app/models/user';
 import { UserUpdateModel } from 'src/app/models/userUpdateModel';
 import { CardService } from 'src/app/services/card.service';
-
 
 @Component({
   selector: 'app-user',
@@ -29,7 +25,6 @@ export class UserComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private userService:UserService,
     private toastrService:ToastrService, private router:Router,
     private authService:AuthService,
-    private localStorage:LocalStorageService,
     private cardService:CardService
     ) { }
 
@@ -39,7 +34,7 @@ export class UserComponent implements OnInit {
 
   createCardAddForm(){
     this.cardAddForm = this.formBuilder.group({
-    userId:[this.authService.user.userId],
+    userId:[this.authService.user.id],
     ownerName:["",Validators.required],
     creditCardNumber:["",Validators.required],
     expirationDate:["",Validators.required],

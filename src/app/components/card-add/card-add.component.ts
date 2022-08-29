@@ -25,7 +25,7 @@ export class CardAddComponent implements OnInit {
 
   createCardAddForm(){
     this.cardAddForm = this.formBuilder.group({
-    userId:[this.authService.user.userId],
+    userId:[this.authService.user.id],
     ownerName:["",Validators.required],
     creditCardNumber:["",Validators.required],
     expirationDate:["",Validators.required],

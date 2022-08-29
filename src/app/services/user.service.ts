@@ -7,6 +7,7 @@ import { OperationClaim } from '../models/operationClaim';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
+import { UserOperationClaim } from '../models/userOperationClaim';
 import { UserPasswordUpdateModel } from '../models/userPasswordUpdateModel';
 import { UserUpdateModel } from '../models/userUpdateModel';
 
@@ -15,28 +16,38 @@ import { UserUpdateModel } from '../models/userUpdateModel';
 })
 export class UserService {
 
-  apiUrl=environment.apiUrl
+  apiUrl=environment.apiUrl + "users/"
 
   constructor(private httpClient:HttpClient) { }
 
   updateUser(userUpdateModel:UserUpdateModel):Observable<ResponseModel>{
-    let newPath= this.apiUrl + "users/update"
+    let newPath= this.apiUrl + "update"
     return this.httpClient.post<ResponseModel>(newPath,userUpdateModel);
   }
 
   getByUserId(userId:number):Observable<SingleResponseModel<UserUpdateModel>>{
-    let newPath = this.apiUrl + "users/getbyuserid?userId="+userId;
+    let newPath = this.apiUrl + "getbyuserid?userId="+userId;
     return this.httpClient.get<SingleResponseModel<UserUpdateModel>>(newPath)
 
   }
 
   getUserRoles(userId:number):Observable<ListResponseModel<OperationClaim>>{
-    let newPath = this.apiUrl + "users/getclaimsbyuser?userid="+userId
+    let newPath = this.apiUrl + "getclaimsbyid?userid="+userId
     return this.httpClient.get<ListResponseModel<OperationClaim>>(newPath)
   }
 
+  getUsers():Observable<ListResponseModel<User>>{
+    let newPath = this.apiUrl + "getAll";
+    return this.httpClient.get<ListResponseModel<User>>(newPath);
+  }
+
   changePassword(userPasswordUpdate:UserPasswordUpdateModel):Observable<ResponseModel>{
-    let newPath = this.apiUrl +"users/changepassword"
+    let newPath = this.apiUrl +"changepassword"
     return this.httpClient.post<ResponseModel>(newPath,userPasswordUpdate);
+  }
+
+  deleteUserRole(userOperationClaim:UserOperationClaim):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "deleteuseroperationclaim";
+    return this.httpClient.post<ResponseModel>(newPath,userOperationClaim);
   }
 }

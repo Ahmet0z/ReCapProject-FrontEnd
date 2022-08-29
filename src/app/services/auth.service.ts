@@ -84,6 +84,7 @@ export class AuthService {
           u.endsWith('/name')
         )[0];
         let userName = String(decodedToken[tokenInfoName]);
+        let name = userName.split(' ');
 
         let tokenInfoId = Object.keys(decodedToken).filter((x) =>
           x.endsWith('/nameidentifier')
@@ -97,8 +98,9 @@ export class AuthService {
 
         let emailInfo = decodedToken.email;
         this.user = {
-          userId: userId,
-          userName: userName,
+          id: userId,
+          firstName: name[0],
+          lastName: name[name.length-1],
           email: emailInfo,
           roles: roles,
         };
@@ -110,8 +112,9 @@ export class AuthService {
 
   getUserById(userId:number){
     this.userService.getByUserId(userId).subscribe(response=>{
-      this.user.userId = response.data.userId;
-      this.user.userName = response.data.firstName + " " + response.data.lastName;
+      this.user.id = response.data.userId;
+      this.user.firstName = response.data.firstName;
+      this.user.lastName = response.data.lastName;
       this.user.email = response.data.email;
     })
   }

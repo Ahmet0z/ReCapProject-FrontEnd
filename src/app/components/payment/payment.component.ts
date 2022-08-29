@@ -1,4 +1,3 @@
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -48,7 +47,7 @@ export class PaymentComponent implements OnInit {
 
   createPaymentForm(){
     this.paymentForm = this.formBuilder.group({
-      userId:[this.authService.user.userId],
+      userId:[this.authService.user.id],
       ownerName:['',Validators.required],
       creditCardNumber:['',Validators.required],
       price:this.paymentService.totalPrice,
@@ -65,7 +64,7 @@ export class PaymentComponent implements OnInit {
 
 setCardModel(){
   this.paymentService.cardModel=<Card>{
-      userId : this.authService.user.userId,
+      userId : this.authService.user.id,
       debts :this.paymentService.totalPrice,
       ownerName :this.paymentForm.controls["ownerName"].value,
       creditCardNumber : this.paymentForm.controls["creditCardNumber"].value,
@@ -110,7 +109,7 @@ setCardModel(){
 
 
   getCardsByCustomer(){
-    this.cardService.getByCustomerId(this.authService.user.userId).subscribe(response=>{
+    this.cardService.getByCustomerId(this.authService.user.id).subscribe(response=>{
       this.cards = response.data
     })
   }

@@ -37,32 +37,31 @@
     </div>
 </div>
 
-    <!-- Modal For Color -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header"><h5 class="title">Renk Güncelle</h5></div>
-                  <div class="card-body">
-                    <form  [formGroup]="colorUpdateForm">
-                        <div class="form-group">
-                          <label for="colorName" class="col-sm-2 col-form-label col-form-label-sm">Renk Adı</label>
-                        <input type="hidden" formControlName="colorId"/>
-                         <input type="text"
-                          id="colorName" 
-                         formControlName="colorName"
-                         class="form-control"
-                         placeholder="Renk Adı"/>  
-                        </div>
-                        <br>
-                        <button style="float:right;" type="button" (click)="updateColor()"class="btn btn-outline-dark">Güncelle </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
+<!-- Modal For Color -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header"><h5 class="title">Renk Güncelle</h5></div>
+            <div class="card-body">
+                <form  [formGroup]="colorUpdateForm">
+                  <div class="form-group">
+                    <label for="colorName" class="col-sm-2 col-form-label col-form-label-sm">Renk Adı</label>
+                    <input type="hidden" formControlName="colorId"/>
+                    <input type="text"
+                      id="colorName" 
+                      formControlName="colorName"
+                      class="form-control"
+                      placeholder="Renk Adı"/>  
+                  </div><br>
+                  <button style="float:right;" type="button" (click)="updateColor()"class="btn btn-outline-dark">Güncelle </button>
+                </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>

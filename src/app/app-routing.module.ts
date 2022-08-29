@@ -4,6 +4,7 @@ import { BrandListComponent } from './components/admin/brand-list/brand-list.com
 import { CardetaillistComponent } from './components/admin/cardetaillist/cardetaillist.component';
 import { ColorListComponent } from './components/admin/color-list/color-list.component';
 import { MainComponent } from './components/admin/main/main.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { UserComponent } from './components/admin/user/user.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:"cardetaillist", component:CardetaillistComponent, canActivate:[AdminGuard]},
   {path:"colorlist",component:ColorListComponent, canActivate:[AdminGuard]},
   {path:"brandlist",component:BrandListComponent, canActivate:[AdminGuard]},
+  {path:"userlist",component:UserListComponent, canActivate:[AdminGuard]},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"aboutUs", component:InformationComponent}
