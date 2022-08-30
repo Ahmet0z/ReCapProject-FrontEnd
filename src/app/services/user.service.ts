@@ -36,6 +36,11 @@ export class UserService {
     return this.httpClient.get<SingleResponseModel<ListClaimsModel>>(newPath)
   }
 
+  getAllRoles():Observable<ListResponseModel<OperationClaim>>{
+    let newPath = this.apiUrl + "getallclaims";
+    return this.httpClient.get<ListResponseModel<OperationClaim>>(newPath);
+  }
+
   getUsers():Observable<ListResponseModel<User>>{
     let newPath = this.apiUrl + "getAll";
     return this.httpClient.get<ListResponseModel<User>>(newPath);
@@ -44,6 +49,11 @@ export class UserService {
   changePassword(userPasswordUpdate:UserPasswordUpdateModel):Observable<ResponseModel>{
     let newPath = this.apiUrl +"changepassword"
     return this.httpClient.post<ResponseModel>(newPath,userPasswordUpdate);
+  }
+
+  addUserRole(userOperationClaim:UserOperationClaim):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "adduseroperationclaim";
+    return this.httpClient.post<ResponseModel>(newPath, userOperationClaim);
   }
 
   deleteUserRole(userOperationClaim:UserOperationClaim):Observable<ResponseModel>{

@@ -23,9 +23,8 @@
                         <td>{{user.firstName}}</td>
                         <td>{{user.lastName}}</td>
                         <td>{{user.email}}</td>
-
                         <td><button type="button" class="btn btn-outline-dark" (click)="getUserRoles(user.id); getUser(user.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">Roller</button></td>
-                        <td><button class="btn btn-warning">Rol Ver</button></td>
+                        <td><button type="button" class="btn btn-warning" (click)="getUser(user.id); roleForm()" data-bs-toggle="modal" data-bs-target="#AddRoleModal">Rol Ver</button></td>
                         <td><button class="btn btn-danger">Sil</button></td>
                         </tr>
                     </tbody>
@@ -51,8 +50,8 @@
                             <th>Rol Kaldır</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let role of roles">
+                    <tbody id="userRoleTable">
+                        <tr id="deleted-{{role.id}}" *ngFor="let role of roles">
                             <td>{{role.name}}</td>
                             <td><button class="btn btn-danger" (click)="deleteUserRole(role)">Sil</button></td>
                         </tr>
@@ -65,3 +64,28 @@
       </div>
     </div>
   </div>
+
+  <!--Modal For Add Role-->
+<div class="modal fade" id="AddRoleModal" tabindex="-1" aria-labelledby="AddRoleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header"><h5 class="title">Kullanıcı Rolleri</h5></div>
+              <div class="card-body">
+                <form [formGroup]="userRoleAddForm">
+                    <select  class="form-select" aria-label="Kullanıcı Seçiniz" formControlName="operationClaimId">
+                        <option value="0" selected>Rol Seçiniz</option>
+                        <option [ngValue]="role.id"  *ngFor="let role of allRoles">{{role.name}} </option>
+                    </select>
+                    <button type="button" class="btn btn-warning mt-2" (click)="addUserRole()">Ekle</button>
+                </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
