@@ -24,7 +24,7 @@
                         <td>{{user.lastName}}</td>
                         <td>{{user.email}}</td>
 
-                        <td><button type="button" class="btn btn-outline-dark" (click)="getUserRoles(user.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">Roller</button></td>
+                        <td><button type="button" class="btn btn-outline-dark" (click)="getUserRoles(user.id); getUser(user.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">Roller</button></td>
                         <td><button class="btn btn-warning">Rol Ver</button></td>
                         <td><button class="btn btn-danger">Sil</button></td>
                         </tr>
@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let role of userRoles">
+                        <tr *ngFor="let role of roles">
                             <td>{{role.name}}</td>
                             <td><button class="btn btn-danger" (click)="deleteUserRole(role)">Sil</button></td>
                         </tr>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ListClaimsModel } from 'src/app/models/listClaimsModel';
 import { OperationClaim } from 'src/app/models/operationClaim';
 import { User } from 'src/app/models/user';
 import { UserOperationClaim } from 'src/app/models/userOperationClaim';
@@ -14,7 +15,9 @@ export class UserListComponent implements OnInit {
 
   users:User[]=[];
   user:User;
-  userRoles:any
+  userId:number
+  roles:OperationClaim[]
+  userRoles:UserOperationClaim[]
 
   constructor(
     private userService:UserService,
@@ -31,19 +34,27 @@ export class UserListComponent implements OnInit {
       })
   }
 
+  getUser(userId:number){
+    this.userId = userId;
+  }
+
   getUserRoles(userId:number){
     this.userService.getUserRoles(userId).subscribe(response =>{
-      this.userRoles = response
+      this.userRoles = response.data.userOperationClaim
+      this.roles = response.data.operationClaim
     })
   }
 
-  deleteUserRole(userOperationClaim:UserOperationClaim){
+  deleteUserRole(operationClaim:OperationClaim){
+    let userOperationClaim = this.userRoles.find(u=> u.userId == this.userId && u.operationClaimId == operationClaim.id);
+
     this.userService.deleteUserRole(userOperationClaim).subscribe(response=>{
-      console.log(response)
+      this.toastrService.success(response.message)
     },
-    responseError=>[
+    responseError=>{
       console.log(responseError)
-    ])
+    }
+    )
   }
 
 }
