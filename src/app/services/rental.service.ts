@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalDetails } from '../models/rentalDetails';
 import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
@@ -12,16 +13,31 @@ import { ResponseModel } from '../models/responseModel';
 export class RentalService {
   totalPrice:number
 
-  apiUrl = environment.apiUrl
+  apiUrl = environment.apiUrl + "rentals/"
   constructor( private httpClient :HttpClient ) { }
 
-  getRentals():Observable<ListResponseModel<Rental>>{
-    let newPath = this.apiUrl + "rentals/getrentaldetails";
-    return this.httpClient.get<ListResponseModel<Rental>>(newPath); 
+  addRental(rental:Rental):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "add";
+    return this.httpClient.post<ResponseModel>(newPath,rental);
   }
 
-  addRental(rental:Rental):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "rentals/add";
-    return this.httpClient.post<ResponseModel>(newPath,rental);
+  getRentalDetails():Observable<ListResponseModel<RentalDetails>>{
+    let newPath = this.apiUrl + "getrentaldetails"
+    return this.httpClient.get<ListResponseModel<RentalDetails>>(newPath)
+  }
+
+  getRentalDetailsByUser(userId:number):Observable<ListResponseModel<RentalDetails>>{
+    let newPath = this.apiUrl + "getrentalbyuser?userId="+userId
+    return this.httpClient.get<ListResponseModel<RentalDetails>>(newPath)
+  }
+
+  getRentalDetailsByCar(carId:number):Observable<ListResponseModel<RentalDetails>>{
+    let newPath = this.apiUrl + "getrentalbycar?carId="+carId
+    return this.httpClient.get<ListResponseModel<RentalDetails>>(newPath)
+  }
+
+  getRentalDetailsByCarAndUser(carId:number,userId:number):Observable<ListResponseModel<RentalDetails>>{
+    let newPath = this.apiUrl + "getrentalbyuser?carId="+ carId +"&userId="+userId
+    return this.httpClient.get<ListResponseModel<RentalDetails>>(newPath)
   }
 }

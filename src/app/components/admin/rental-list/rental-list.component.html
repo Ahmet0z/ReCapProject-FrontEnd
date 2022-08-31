@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-2">
+    <app-main></app-main>
+  </div>
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+        <div class="col-md-3">
+        <select [(ngModel)]="carFilter" class="form-select">
+          <option value="0" selected="true">Araba Seçiniz</option>
+            <option [selected]="getSelectedCar(car.id)" [value]="car.id" *ngFor="let car of cars">{{car.carName}}</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-warning" (click)="getRentalsByCar()">Filtrele</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-dark" *ngIf="isFiltered" (click)="deleteFilter()" >Filtreyi Kaldır</button>
+      </div>
+    </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Araba Adı</th>
+              <th scope="col">Müşteri Adı</th>
+              <th scope="col">Kiralama Tarihi</th>
+              <th scope="col">Dönüş Tarihi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rental of rentals">
+              <td>{{ rental.carName }}</td>
+              <td>{{ rental.customerName }}</td>
+              <td>{{ rental.rentDate }}</td>
+              <td>{{ rental.returnDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

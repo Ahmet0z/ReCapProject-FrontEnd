@@ -38,6 +38,7 @@ import { MainComponent } from './components/admin/main/main.component';
 import { BrandListComponent } from './components/admin/brand-list/brand-list.component';
 import { ColorListComponent } from './components/admin/color-list/color-list.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { RentalListComponent } from './components/admin/rental-list/rental-list.component';
 
 
 
@@ -76,6 +77,7 @@ export function tokenGetter() {
     BrandListComponent,
     ColorListComponent,
     UserListComponent,
+    RentalListComponent,
   ],
   imports: [
     ToastrModule.forRoot({

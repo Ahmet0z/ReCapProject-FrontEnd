@@ -16,6 +16,11 @@ export class CarService {
   apiUrl = environment.apiUrl + 'cars/'
   constructor( private httpClient :HttpClient ) { }
 
+  getAllCars():Observable<ListResponseModel<Car>>{
+    let newPath = this.apiUrl + "getall";
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  
   getCarById(carId:number):Observable<SingleResponseModel<Car>>{
     let newPath = this.apiUrl + 'get';
     return this.httpClient.get<SingleResponseModel<Car>>(newPath);
