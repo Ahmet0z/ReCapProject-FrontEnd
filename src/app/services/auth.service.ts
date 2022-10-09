@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,10 @@ export class AuthService {
     return this.jwtHelper.decodeToken(token);
   }
 
+  decodeJWTToken(token:any){
+    return Object.values(jwtDecode(token));
+  }
+
   isAuthenticated() {
     if (this.localStorageService.getToken()) {
       return true;
@@ -53,7 +58,6 @@ export class AuthService {
     }
   }
 
-
   isAdmin(){
     let isAdmin=false;
     if(this.loggedIn()){
@@ -61,7 +65,6 @@ export class AuthService {
       this.user.roles?.toString().split(",").map(role=> {
         if(role.toLocaleLowerCase().indexOf("admin")!== -1){
            isAdmin=true;
-          
         }
 
       })
@@ -123,7 +126,7 @@ export class AuthService {
     this.localStorageService.removeToken()
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 0);
     this.router.navigate(["/cars"])
     this.toastrService.info("","Çıkış başarılı")
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup
 
-  constructor(private formBuilder:FormBuilder, private authService:AuthService, private toastrService:ToastrService, private localStroageService:LocalStorageService, private router:Router) { }
+  constructor(private formBuilder:FormBuilder, private authService:AuthService, private toastrService:ToastrService, 
+    private localStroageService:LocalStorageService, private router:Router) { }
 
   ngOnInit(): void {
     this.createLoginForm()
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.localStroageService.saveToken(response.data.token)
         setTimeout(() => {
           window.location.reload();
-        }, 1000);    
+        }, 0);    
         this.router.navigate(["/cars"])
         this.toastrService.info(response.message)  
       },responseError=>{

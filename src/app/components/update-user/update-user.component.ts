@@ -6,6 +6,7 @@ import { UserUpdateModel } from 'src/app/models/userUpdateModel';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import jwtDecode from 'jwt-decode';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class UpdateUserComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder, private userService:UserService,
     private toastrService:ToastrService, private router:Router,
-    private localStorage:LocalStorageService,
+    private localStorage:LocalStorageService, private authService:AuthService
 
   ) { }
 
@@ -32,7 +33,7 @@ export class UpdateUserComponent implements OnInit {
   }
   getUserById(){
   let token = this.localStorage.getToken()
-  let id:number=Number(Object.values(jwtDecode(token))[0])
+  let id:number = Number(this.authService.decodeJWTToken(token)[0])
   this.userId=id;
   this.userService.getByUserId(id).subscribe(response=>{
     this.user = response.data;  
@@ -53,7 +54,7 @@ updateUser(){
   if (this.updateUserForm.valid) {
     let userModel = Object.assign({},this.updateUserForm.value)
     let token = this.localStorage.getToken()
-    let id:number=Number(Object.values(jwtDecode(token))[0])
+    let id:number = Number(this.authService.decodeJWTToken(token)[0])
     userModel.userId = id;
     this.userService.updateUser(userModel).subscribe(response=>{
       this.toastrService.success(response.message,"Başarılı")
