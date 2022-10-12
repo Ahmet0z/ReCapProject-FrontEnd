@@ -14,6 +14,7 @@
             <thead>
               <tr>
                 
+                <th scope="col">Plakası</th>
                 <th scope="col">Araba Adı</th>
                 <th scope="col">Renk Numarası</th>
                 <th scope="col">Marka Numarası</th>
@@ -27,7 +28,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let car of cars">
-                
+                <td>{{car.plate}}</td>
                 <td>{{car.carName}}</td>
                 <td>{{car.colorId}}</td>
                 <td>{{car.brandId }}</td>
@@ -65,6 +66,14 @@
               <div class="card-header"><h5 class="title">Araba Güncelle</h5></div>
               <div class="card-body">
                 <form [formGroup]="carUpdateForm" >
+                  <div class="form-group">
+                    <label for="plate" class="col-sm-2 col-form-label col-form-label-sm">Plaka</label>
+                   <input type="text"
+                    id="plate" 
+                   formControlName="plate"
+                   class="form-control"
+                   placeholder="Plaka"/>
+                  </div>
                     <div class="form-group">
                       <label for="carName" class="col-sm-2 col-form-label col-form-label-sm">Araba İsmi</label>
                      <input type="text"

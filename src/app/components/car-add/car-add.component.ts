@@ -41,7 +41,13 @@ export class CarAddComponent implements OnInit {
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
       description:["",Validators.required],
-      findeks:["",Validators.required]
+      findeks:["",Validators.required],
+      plate:["",Validators.required]
+    })
+    
+    this.carAddForm.patchValue({
+      brandId:0,
+      colorId:0
     })
   }
 

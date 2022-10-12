@@ -93,7 +93,8 @@ export class CardetaillistComponent implements OnInit {
       modelYear:this.car.modelYear,
       carName:this.car.carName,
       findeks:this.car.findeks,
-      description:this.car.description
+      description:this.car.description,
+      plate:this.car.plate
     })
   }
 
@@ -106,7 +107,8 @@ export class CardetaillistComponent implements OnInit {
      modelYear:['',Validators.required],
      dailyPrice:['',Validators.required],
      description:['',Validators.required],
-     findeks:['',Validators.required]
+     findeks:['',Validators.required],
+     plate:['',Validators.required]
     })
   }
 

@@ -25,6 +25,7 @@
           <thead>
             <tr>
               <th scope="col">Araba Adı</th>
+              <th scope="col">Plaka</th>
               <th scope="col">Müşteri Adı</th>
               <th scope="col">Kiralama Tarihi</th>
               <th scope="col">Dönüş Tarihi</th>
@@ -33,6 +34,7 @@
           <tbody>
             <tr *ngFor="let rental of rentals">
               <td>{{ rental.carName }}</td>
+              <td>{{ rental.plate }}</td>
               <td>{{ rental.customerName }}</td>
               <td>{{ rental.rentDate }}</td>
               <td>{{ rental.returnDate }}</td>
