@@ -27,7 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { UserComponent } from './components/admin/user/user.component';
+import { UserComponent } from './components/user/user.component';
 import { InformationComponent } from './components/information/information.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -39,6 +39,7 @@ import { BrandListComponent } from './components/admin/brand-list/brand-list.com
 import { ColorListComponent } from './components/admin/color-list/color-list.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { RentalListComponent } from './components/admin/rental-list/rental-list.component';
+import { UserRentalListComponent } from './components/user-rental-list/user-rental-list.component';
 
 
 
@@ -78,6 +79,7 @@ export function tokenGetter() {
     ColorListComponent,
     UserListComponent,
     RentalListComponent,
+    UserRentalListComponent,
   ],
   imports: [
     ToastrModule.forRoot({

@@ -19,6 +19,13 @@
         Kart Ekle
       </button>  
     </div>  
+
+    <!--List Rental-->
+    <div class="row">
+      <button type="button"  class="btn btn-warning"  (click)="rentalToList()">
+        Kiralamalar
+      </button>  
+    </div>  
   </div>
 
   <div class="col-md-1"></div>
@@ -37,6 +44,9 @@
       <app-card-add></app-card-add> 
     </div>
 
+    <div *ngIf="rentalList">
+      <app-user-rental-list></app-user-rental-list>
+    </div>
   </div>
 </div>
 

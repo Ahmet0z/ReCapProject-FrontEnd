@@ -12,7 +12,7 @@
             <option [selected]="getSelectedCar(car.id)" [value]="car.id" *ngFor="let car of cars">{{car.carName}}</option>
         </select>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <button class="btn btn-warning" (click)="getRentalsByCar()">Filtrele</button>
       </div>
       <div class="col-md-2">
@@ -35,9 +35,9 @@
             <tr *ngFor="let rental of rentals">
               <td>{{ rental.carName }}</td>
               <td>{{ rental.plate }}</td>
-              <td>{{ rental.customerName }}</td>
-              <td>{{ rental.rentDate }}</td>
-              <td>{{ rental.returnDate }}</td>
+              <td>{{ rental.userName }}</td>
+              <td>{{ rental.rentDate | date:'longDate' }}</td>
+              <td>{{ rental.returnDate | date:'longDate'   }}</td>
             </tr>
           </tbody>
         </table>

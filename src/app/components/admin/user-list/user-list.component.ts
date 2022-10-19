@@ -97,8 +97,7 @@ export class UserListComponent implements OnInit {
         this.toastrService.success(response.message,"Başarılı")
       },responseError => {
         console.log(responseError)
-      }
-      )
+      })
     }  
     else{
       this.toastrService.error("Form eksik.","Dikkat")

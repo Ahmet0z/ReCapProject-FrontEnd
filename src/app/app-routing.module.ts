@@ -6,7 +6,7 @@ import { ColorListComponent } from './components/admin/color-list/color-list.com
 import { MainComponent } from './components/admin/main/main.component';
 import { RentalListComponent } from './components/admin/rental-list/rental-list.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
-import { UserComponent } from './components/admin/user/user.component';
+import { UserComponent } from './components/user/user.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';

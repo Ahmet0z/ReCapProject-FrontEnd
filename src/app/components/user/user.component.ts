@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   userUpdate:boolean;
   passwordChange:boolean;
   cardAdd:boolean;
+  rentalList:boolean
 
   constructor(private formBuilder:FormBuilder, private userService:UserService,
     private toastrService:ToastrService, private router:Router,
@@ -50,7 +51,7 @@ export class UserComponent implements OnInit {
       this.cardService.add(cardModel).subscribe(response=>{
         setTimeout(() => { 
           window.location.reload();      
-        }, 1000);
+        }, 0);
         this.toastrService.success(response.message,"Başarılı")
       },responsError=>{
         console.log(responsError)
@@ -67,16 +68,26 @@ export class UserComponent implements OnInit {
     this.userUpdate = true;
     this.passwordChange = false;
     this.cardAdd = false;
+    this.rentalList = false;
   }
 
   passwordToChange(){
     this.passwordChange = true;
     this.userUpdate = false;
     this.cardAdd = false;
+    this.rentalList = false;
   }
 
   cardToAdd(){
     this.cardAdd = true;
+    this.passwordChange = false;
+    this.userUpdate = false;
+    this.rentalList = false;
+  }
+
+  rentalToList(){
+    this.rentalList = true;
+    this.cardAdd = false;
     this.passwordChange = false;
     this.userUpdate = false;
   }

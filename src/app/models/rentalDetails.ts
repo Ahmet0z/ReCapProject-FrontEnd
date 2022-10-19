@@ -4,7 +4,7 @@ export interface RentalDetails{
     carId:number
     carName:string
     plate:string;
-    customerName:string
+    userName:string
     rentDate:Date
     returnDate?:Date
 }
