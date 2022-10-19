@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
 import { Color } from 'src/app/models/color';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarImagesService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -24,8 +29,14 @@ export class CarComponent implements OnInit {
   colorFilter: number = 0;
   cardetailFilter = '';
 
+  userFindeks:number;
+  isFindeksEnough:boolean;
+  userId:number
+  user:User
+  x:any
+  anyNumberisToBeFindeks:String
+
   currentCar: Car;
-  dataLoaded = false;
   imageUrl = environment.imageUrl
   
   constructor(
@@ -33,12 +44,17 @@ export class CarComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private imageService: CarImagesService,
     private colorService: ColorService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private authService: AuthService,
+    private userService:UserService,
+    private localStorege:LocalStorageService,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
     this.getAllBrands();
     this.getAllColors();
+    this.isUserFindeksEnough()
 
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
@@ -55,24 +71,34 @@ export class CarComponent implements OnInit {
     });
   }
 
+  isUserFindeksEnough(){
+    if(this.authService.loggedIn()){
+
+      this.userId = this.authService.getUser().id
+      
+      this.userService.userGetById(this.userId).subscribe(response=>{
+        this.toastrService.success((response.data.findeks).toString());
+      }, responseError=>{
+        console.log(responseError)
+      })
+    }
+  }
+
   getCars() {
     this.carService.getCars().subscribe((response) => {
-      this.carDetails = response.data,
-      this.dataLoaded = true
+      this.carDetails = response.data
     });
   }
 
   getCarsByBrand(brandId: number) {
     this.carService.getCarsByBrand(brandId).subscribe((response) => {
       this.carDetails = response.data;
-      this.dataLoaded = true;
     });
   }
 
   getCarsByColor(colorId: number) {
     this.carService.getCarsByColor(colorId).subscribe((response) => {
       this.carDetails = response.data;
-      this.dataLoaded = true;
     });
   }
 
@@ -83,7 +109,6 @@ export class CarComponent implements OnInit {
   getCarDetails(carId: number) {
     this.carService.getCarDetails(carId).subscribe((response) => {
       this.carDetails = response.data;
-      this.dataLoaded = true;
     });
   }
 
