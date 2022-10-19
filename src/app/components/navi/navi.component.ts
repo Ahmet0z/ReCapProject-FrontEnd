@@ -29,7 +29,7 @@ export class NaviComponent implements OnInit {
   }
 
   isAuthenticated(){
-    if (this.authService.isAuthenticated()) {
+    if (this.authService.loggedIn()) {
       this.isUserAuthenticated = true
     }else{
       this.isUserAuthenticated=false

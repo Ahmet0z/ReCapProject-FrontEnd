@@ -88,11 +88,7 @@
 
         <div class="card-body">
           <h5 class="card-title">{{ cardetail.carName }}</h5>
-          <p
-            class="card-text"
-            style="color: green"
-            *ngIf="cardetail.isRentable"
-          >
+          <p class="card-text" style="color: green" *ngIf="cardetail.isRentable">
             Kiralanabilir
           </p>
           <p class="card-text" style="color: red" *ngIf="!cardetail.isRentable">

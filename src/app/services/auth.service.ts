@@ -50,14 +50,6 @@ export class AuthService {
     return Object.values(jwtDecode(token));
   }
 
-  isAuthenticated() {
-    if (this.localStorageService.getToken()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   isAdmin(){
     let isAdmin=false;
     if(this.loggedIn()){
@@ -71,6 +63,7 @@ export class AuthService {
     }
     return isAdmin;
   }
+
   loggedIn() {
     if (this.localStorageService.getToken()) {
       return true
@@ -106,20 +99,23 @@ export class AuthService {
           lastName: name[name.length-1],
           email: emailInfo,
           roles: roles,
+          findeks: 50
         };
-
       }
     }
     return this.user;
   }
 
   getUserById(userId:number){
-    this.userService.getByUserId(userId).subscribe(response=>{
-      this.user.id = response.data.userId;
+    this.userService.userGetById(userId).subscribe(response=>{
+      this.user.id = response.data.id;
       this.user.firstName = response.data.firstName;
       this.user.lastName = response.data.lastName;
       this.user.email = response.data.email;
+      this.user.findeks = response.data.findeks;
     })
+
+    return this.user;
   }
 
   logOut(){

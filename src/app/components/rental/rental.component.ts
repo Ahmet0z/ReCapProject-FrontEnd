@@ -62,7 +62,7 @@ export class RentalComponent implements OnInit {
   
 
    isAuthenticated(){
-    return this.authService.isAuthenticated()
+    return this.authService.loggedIn()
   }
 
   payment(){

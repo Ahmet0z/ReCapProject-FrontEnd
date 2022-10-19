@@ -26,6 +26,11 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(newPath,userUpdateModel);
   }
 
+  userGetById(userId:number):Observable<SingleResponseModel<User>>{
+    let newPath = this.apiUrl + "getbyuserid?userId="+userId;
+    return this.httpClient.get<SingleResponseModel<User>>(newPath);
+  }
+
   getByUserId(userId:number):Observable<SingleResponseModel<UserUpdateModel>>{
     let newPath = this.apiUrl + "getbyuserid?userId="+userId;
     return this.httpClient.get<SingleResponseModel<UserUpdateModel>>(newPath)
