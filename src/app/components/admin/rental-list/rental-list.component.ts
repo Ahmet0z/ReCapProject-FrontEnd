@@ -45,15 +45,19 @@ export class RentalListComponent implements OnInit {
   }
 
   getRentalsByCar(){
-    this.rentalService.getRentalDetailsByCar(this.carFilter).subscribe(response=>{
-      this.rentals = response.data
-      this.isFiltered=true
-    })
+    if(this.carFilter==0){
+      this.getRentalDetails();
+      this.isFiltered=false;
+    }else{
+      this.rentalService.getRentalDetailsByCar(this.carFilter).subscribe(response=>{
+        this.rentals = response.data
+        this.isFiltered=true
+      })
+    }
   }
 
   deleteFilter(){
     this.isFiltered=false;
-    this.getCars()
     this.getRentalDetails()
   }
 }
