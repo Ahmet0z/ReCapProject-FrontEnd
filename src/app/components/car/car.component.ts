@@ -34,7 +34,7 @@ export class CarComponent implements OnInit {
   userId:number
   user:User
   x:any
-  anyNumberisToBeFindeks:String
+  anyNumberisToBeFindeks:number
 
   currentCar: Car;
   imageUrl = environment.imageUrl
@@ -73,13 +73,13 @@ export class CarComponent implements OnInit {
 
   isUserFindeksEnough(){
     if(this.authService.loggedIn()){
-
       this.userId = this.authService.getUser().id
       
       this.userService.userGetById(this.userId).subscribe(response=>{
         this.toastrService.success((response.data.findeks).toString());
+        this.userFindeks =response.data.findeks;
       }, responseError=>{
-        console.log(responseError)
+        this.toastrService.error(responseError)
       })
     }
   }

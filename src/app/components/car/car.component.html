@@ -88,11 +88,14 @@
 
         <div class="card-body">
           <h5 class="card-title">{{ cardetail.carName }}</h5>
-          <p class="card-text" style="color: green" *ngIf="cardetail.isRentable">
+          <p class="card-text" style="color: green" *ngIf="cardetail.isRentable && userFindeks>=cardetail.findeks">
             Kiralanabilir
           </p>
-          <p class="card-text" style="color: red" *ngIf="!cardetail.isRentable">
+          <p class="card-text" style="color: red" *ngIf="!cardetail.isRentable && userFindeks>=cardetail.findeks">
             Şu anda başka birisi tarafından kullanılmaktadır
+          </p>
+          <p class="card-text" style="color:red" *ngIf="userFindeks<=cardetail.findeks">
+            Findeks puanınız yeterli değil
           </p>
         </div>
 
