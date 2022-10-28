@@ -76,7 +76,6 @@ export class CarComponent implements OnInit {
       this.userId = this.authService.getUser().id
       
       this.userService.userGetById(this.userId).subscribe(response=>{
-        this.toastrService.success((response.data.findeks).toString());
         this.userFindeks =response.data.findeks;
       }, responseError=>{
         this.toastrService.error(responseError)

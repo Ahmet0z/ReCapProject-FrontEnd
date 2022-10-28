@@ -27,11 +27,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let car of cars">
+              <tr *ngFor="let car of cardetails">
                 <td>{{car.plate}}</td>
                 <td>{{car.carName}}</td>
-                <td>{{car.colorId}}</td>
-                <td>{{car.brandId }}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.brandName }}</td>
                 <td>{{car.dailyPrice  | currency: "TRY":true:"1.2-2" }}</td>
                 <td>{{car.modelYear}}</td>
                 <td>{{car.description}}</td>
