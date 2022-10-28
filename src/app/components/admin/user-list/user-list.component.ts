@@ -19,6 +19,7 @@ export class UserListComponent implements OnInit {
   roles:OperationClaim[]
   allRoles:OperationClaim[]
   userRoles:UserOperationClaim[]
+  roleModel:UserOperationClaim
   userRoleAddForm:FormGroup
 
   constructor(
@@ -92,11 +93,18 @@ export class UserListComponent implements OnInit {
 
   addUserRole(){
     if(this.userRoleAddForm.valid){
-      let roleModel = Object.assign({}, this.userRoleAddForm.value);
-      this.userService.addUserRole(roleModel).subscribe(response => {
+      this.roleModel = Object.assign({}, this.userRoleAddForm.value);
+      this.userService.addUserRole(this.roleModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
       },responseError => {
         console.log(responseError)
+        if(responseError.error.Errors){
+          for(let i =0; i<responseError.error.Errors.length; i++){
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage);
+          }
+        }else{
+          this.toastrService.error(responseError.error)
+        }
       })
     }  
     else{
