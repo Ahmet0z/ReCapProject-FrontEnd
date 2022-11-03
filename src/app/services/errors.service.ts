@@ -17,7 +17,7 @@ export class ErrorsService {
         this.toastrService.error(responseError.error.Errors[i].ErrorMessage);
       }
     }else{
-      this.toastrService.error(responseError.error)
+      this.toastrService.error(responseError.error.message)
     }
   }
 
