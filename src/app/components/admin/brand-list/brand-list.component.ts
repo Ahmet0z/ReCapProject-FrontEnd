@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-brand-list',
@@ -19,7 +20,8 @@ export class BrandListComponent implements OnInit {
   constructor(
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private brandService:BrandService
+    private brandService:BrandService,
+    private errorService:ErrorsService
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class BrandListComponent implements OnInit {
           this.toastrService.success(response.message, 'Başarıyla Güncellendi');
           setTimeout(() => {
             window.location.reload();
-          }, 1000);
+          }, 0);
           
         },
         (responseError) => {
@@ -72,11 +74,11 @@ export class BrandListComponent implements OnInit {
         this.toastrService.success('Başarıyla Silindi');
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 0);
         
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'Marka Silinemedi');
+        this.errorService.responseErrorMessages(responseError);
       }
     );
   }

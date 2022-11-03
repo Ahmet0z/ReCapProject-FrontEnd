@@ -13,6 +13,7 @@ import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-cardetaillist',
@@ -33,7 +34,8 @@ export class CardetaillistComponent implements OnInit {
     private colorService: ColorService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private carService:CarService
+    private carService:CarService,
+    private errorService:ErrorsService
   ) {}
 
   ngOnInit(): void {
@@ -86,7 +88,6 @@ export class CardetaillistComponent implements OnInit {
     this.car = car;
     
     this.carUpdateForm.patchValue({
-      id:this.car.id,
       brandId:this.car.brandId,
       colorId:this.car.colorId,
       dailyPrice:this.car.dailyPrice,
@@ -94,13 +95,14 @@ export class CardetaillistComponent implements OnInit {
       carName:this.car.carName,
       findeks:this.car.findeks,
       description:this.car.description,
-      plate:this.car.plate
+      plate:this.car.plate,
+      id:this.car.id
     })
   }
 
   createCarforUpdateForm(){
     this.carUpdateForm = this.formBuilder.group({
-     carId: [''],
+     id: [''],
      brandId:[''],
      colorId:[''],
      carName:['',Validators.required],
@@ -115,17 +117,15 @@ export class CardetaillistComponent implements OnInit {
   updateCar(){
     if(this.carUpdateForm.valid){
       let carModel = Object.assign({},this.carUpdateForm.value);
-      console.log(this.carUpdateForm.value)
        this.carService.updateCar(carModel).subscribe(response=>{
          console.log(response)
          this.toastrService.success(response.message,"Güncellendi");
          setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 0);
          
        },responseError=>{
-         console.log(responseError)
-         this.toastrService.error(responseError.error.message);
+         this.errorService.responseErrorMessages(responseError);
        }
        )
     }
@@ -137,11 +137,11 @@ export class CardetaillistComponent implements OnInit {
         this.toastrService.success('Silindi');
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 0);
         
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'Arac Silinemedi');
+        this.errorService.responseErrorMessages(responseError);
       }
     );
   }

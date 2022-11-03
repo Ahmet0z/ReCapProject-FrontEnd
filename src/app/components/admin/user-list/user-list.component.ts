@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { OperationClaim } from 'src/app/models/operationClaim';
 import { User } from 'src/app/models/user';
 import { UserOperationClaim } from 'src/app/models/userOperationClaim';
+import { ErrorsService } from 'src/app/services/errors.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService:UserService,
     private toastrService:ToastrService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private errorService:ErrorsService
   ) { }
 
   ngOnInit(): void {
@@ -67,10 +69,7 @@ export class UserListComponent implements OnInit {
       table.removeChild(deleted)
     },
     responseError=>{
-      for(var i =0; i<responseError.error.length; i++)
-      {
-        this.toastrService.error(responseError.error.message,"Hata!")
-      }
+      this.errorService.responseErrorMessages(responseError);
     }
     )
   }
@@ -97,14 +96,7 @@ export class UserListComponent implements OnInit {
       this.userService.addUserRole(this.roleModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
       },responseError => {
-        console.log(responseError)
-        if(responseError.error.Errors){
-          for(let i =0; i<responseError.error.Errors.length; i++){
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage);
-          }
-        }else{
-          this.toastrService.error(responseError.error)
-        }
+        this.errorService.responseErrorMessages(responseError);
       })
     }  
     else{

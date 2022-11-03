@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  FormGroup,FormBuilder,FormControl,Validators,} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BrandService } from 'src/app/services/brand.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-brand-add',
@@ -14,7 +15,8 @@ export class BrandAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private brandService:BrandService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private errorService:ErrorsService
   ) {}
 
   ngOnInit(): void {
@@ -34,12 +36,10 @@ export class BrandAddComponent implements OnInit {
       this.brandService.add(brandModel).subscribe(response=>{
         setTimeout(() => { 
           window.location.reload();      
-        }, 1000);
+        }, 0);
         this.toastrService.success(response.message,"Başarılı")
-      },responsError=>{
-        for (let i = 0; i < responsError.error.Errors.length; i++) {
-          this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
-        }
+      },responseError=>{
+        this.errorService.responseErrorMessages(responseError);
       })
     }else{
       this.toastrService.error("Form eksik.","Dikkat")

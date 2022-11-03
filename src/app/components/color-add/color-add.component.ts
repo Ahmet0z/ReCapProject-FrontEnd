@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators,} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ColorService } from 'src/app/services/color.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-color-add',
@@ -14,7 +15,8 @@ export class ColorAddComponent implements OnInit {
   constructor(
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private colorService: ColorService
+    private colorService: ColorService,
+    private errorService:ErrorsService
   ) {}
 
   ngOnInit(): void {
@@ -33,13 +35,10 @@ export class ColorAddComponent implements OnInit {
       this.colorService.add(colorModel).subscribe(response=>{
         setTimeout(() => { 
           window.location.reload();      
-        }, 1000);
+        }, 0);
         this.toastrService.success(response.message,"Başarılı")
-      },responsError=>{
-        console.log(responsError.error.Errors)
-        for (let i = 0; i < responsError.error.Errors.length; i++) {
-          this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
-        }
+      },responseError=>{
+        this.errorService.responseErrorMessages(responseError);
       })
     }else{
       this.toastrService.error("Form eksik.","Dikkat")

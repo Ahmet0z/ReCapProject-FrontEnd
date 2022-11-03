@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { CardService } from 'src/app/services/card.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-card-add',
@@ -16,7 +17,8 @@ export class CardAddComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
     private toastrService:ToastrService,
     private authService:AuthService,
-    private cardService:CardService
+    private cardService:CardService,
+    private errorService:ErrorsService
     ) { }
 
   ngOnInit(): void {
@@ -41,13 +43,10 @@ export class CardAddComponent implements OnInit {
       this.cardService.add(cardModel).subscribe(response=>{
         setTimeout(() => { 
           window.location.reload();      
-        }, 1000);
+        }, 0);
         this.toastrService.success(response.message,"Başarılı")
-      },responsError=>{
-        console.log(responsError)
-        // for (let i = 0; i < responsError.error.Errors.length; i++) {
-        //   this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
-        // }
+      },responseError=>{
+        this.errorService.responseErrorMessages(responseError);
       })
     }else{
       this.toastrService.error("Form eksik.","Dikkat")

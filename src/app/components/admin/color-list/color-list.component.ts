@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-color-list',
@@ -20,6 +21,7 @@ export class ColorListComponent implements OnInit {
     private colorService: ColorService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
+    private errorService:ErrorsService
 
   ) { }
 
@@ -60,12 +62,11 @@ export class ColorListComponent implements OnInit {
           this.toastrService.success(response.message, 'Güncellendi');
           setTimeout(() => {
             window.location.reload();
-          }, 1000);
+          }, 0);
           
         },
         (responseError) => {
-          console.log(responseError)
-          this.toastrService.error('Güncellenemedi');
+          this.errorService.responseErrorMessages(responseError);
         }
       );
     }
@@ -77,11 +78,10 @@ export class ColorListComponent implements OnInit {
         this.toastrService.success('Silindi');
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
-        
+        }, 0);
       },
       (responseError) => {
-        this.toastrService.error(responseError.errors, 'Renk Silinemedi');
+        this.errorService.responseErrorMessages(responseError);
       }
     );
   }

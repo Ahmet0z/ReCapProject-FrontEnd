@@ -6,6 +6,7 @@ import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-car-add',
@@ -25,7 +26,9 @@ export class CarAddComponent implements OnInit {
     private formBuilder:FormBuilder, 
     private carService:CarService, 
     private colorService:ColorService, 
-    private brandService:BrandService) { }
+    private brandService:BrandService,
+    private errorService:ErrorsService
+    ) { }
 
   ngOnInit(): void {
     this.createCarAddForm(),
@@ -79,12 +82,10 @@ export class CarAddComponent implements OnInit {
       this.carService.add(carModel).subscribe(response=>{
         setTimeout(() => { 
           window.location.reload();      
-        }, 1000);
+        }, 0);
         this.toastrService.success(response.message,"Başarılı")
-      },responsError=>{
-        for (let i = 0; i < responsError.error.Errors.length; i++) {
-          this.toastrService.error(responsError.error.Errors[i].ErrorMessage,"Hata")
-        }
+      },responseError=>{
+        this.errorService.responseErrorMessages(responseError);
       })
     }else{
       this.toastrService.error("Form eksik.","Dikkat")

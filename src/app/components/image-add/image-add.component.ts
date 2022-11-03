@@ -1,10 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
+import { ImageCar } from 'src/app/models/imageCar';
 import { CarImagesService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-image-add',
@@ -15,12 +18,15 @@ export class ImageAddComponent implements OnInit {
   imageAddForm: FormGroup;
   cars: CarDetail[];
   carFilter: number;
+  imageModel:ImageCar
 
   constructor(
     private toastrService: ToastrService,
     private carImageService: CarImagesService,
     private formBuilder: FormBuilder,
-    private carService: CarService
+    private carService: CarService,
+    private http:HttpClient,
+    private errorService:ErrorsService
   ) {}
 
   ngOnInit(): void {
@@ -31,28 +37,53 @@ export class ImageAddComponent implements OnInit {
   createImageAddForm() {
     this.imageAddForm = this.formBuilder.group({
       file: ['', Validators.required],
-      carId: ['', Validators.required],
+      carId:['']
     });
+
+    this.imageAddForm.patchValue({
+      carId:0
+    })
+  }
+
+  // public uploadFile = (files:any) =>{
+  //   if(files.length === 0){
+  //     return;
+  //   }
+  //   let fileToUpload = <File>files[0];
+  //   const formData = new FormData();
+  //   formData.append('file', fileToUpload, fileToUpload.name)
+
+  //   console.log(formData)
+  //   console.log(fileToUpload)
+  //   //this.imageModel = formData
+  //   //this.carImageService.addCarImage(this.imageModel)
+
+
+  // }
+
+  onChange(event:Event){
+    console.log(event.target)
   }
 
   add() {
-    console.log(this.imageAddForm)
+    //console.log(this.imageAddForm)
+    //console.log(this.imageAddForm.value.file)
+
+    //const image = document.getElementById('uploaded').files[0]
+
+    console.log()
+
     if (this.imageAddForm.valid) {
-      let imageModel = Object.assign({}, this.imageAddForm.value);
-      this.carImageService.addCarImage(imageModel).subscribe(
-        (response) => {
-          this.toastrService.success(response.message, 'Başarılı');
-        },
-        (responsError) => {
-          console.log(responsError);
-          for (let i = 0; i < responsError.error.Errors.length; i++) {
-            this.toastrService.error(
-              responsError.error.Errors[i].ErrorMessage,
-              'Hata'
-            );
-          }
-        }
-      );
+      this.imageModel = Object.assign({}, this.imageAddForm.value);
+      // this.carImageService.addCarImage(this.imageModel).subscribe(
+      //   (response) => {
+      //     this.toastrService.success(response.message, 'Başarılı');
+      //   },
+      //   (responsError) => {
+      //        this.errorService.responseErrorMessages(responseError);
+      //     }
+      //   }
+      // );
     } else {
       this.toastrService.error('Form eksik.', 'Dikkat');
     }

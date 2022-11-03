@@ -9,10 +9,11 @@
             <div class="form-group">
               <input
                 type="file"
-                id="file"
+                id="uploadedFile"
                 formControlName="file"
                 class="form-control"
                 placeholder="Araç Resimi"
+                (change)="onChange($event)"
               />
             </div>
           </div>
@@ -31,7 +32,7 @@
                 {{ car.carName }}
               </option>
             </select>
-          </div>
+          </div>  
         </form>
       </div>
       <div class="card-footer">
