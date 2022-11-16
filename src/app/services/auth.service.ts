@@ -8,7 +8,6 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { LocalStorageService } from './local-storage.service';
 import { User } from '../models/user';
-import { CustomerService } from './customer.service';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
@@ -24,7 +23,7 @@ export class AuthService {
 
   apiUrl = environment.apiUrl + 'Auth/';
 
-  constructor(private httpClient: HttpClient, private customerService: CustomerService, 
+  constructor(private httpClient: HttpClient, 
     private localStorageService: LocalStorageService, private jwtHelper: JwtHelperService,
     private userService:UserService, private router:Router, private toastrService:ToastrService
     ) {}

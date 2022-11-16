@@ -47,7 +47,7 @@
       <li class="list-group-item">Araba Adı: {{ cardetails.carName }}</li>
       <li class="list-group-item">
         Günlük Fiyatı:
-        {{ cardetails.dailyPrice | currency: "TRY":true:"1.2-2" }}
+        {{ cardetails.dailyPrice | currency: "TRY":"symbol-narrow"}}
       </li>
       <li class="list-group-item">Açıklaması : {{ cardetails.description }}</li>
       <li class="list-group-item">Findeks Puanı : {{ cardetails.findeks }}</li>

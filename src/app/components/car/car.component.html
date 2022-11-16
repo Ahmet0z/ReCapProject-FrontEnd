@@ -105,7 +105,7 @@
           <li class="list-group-item">{{ cardetail.brandName }}</li>
           <li class="list-group-item">{{ cardetail.carName }}</li>
           <li class="list-group-item">
-            {{ cardetail.dailyPrice | currency: "TRY" }}
+            {{ cardetail.dailyPrice | currency: "TRY":"symbol-narrow"}}
           </li>
           <li class="list-group-item">{{ cardetail.description }}</li>
           <li class="list-group-item">{{ cardetail.findeks }} Findeks</li>

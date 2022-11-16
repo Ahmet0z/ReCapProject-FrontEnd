@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
+import { CarImage } from 'src/app/models/carImage';
 import { ImageCar } from 'src/app/models/imageCar';
 import { CarImagesService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
@@ -18,7 +19,9 @@ export class ImageAddComponent implements OnInit {
   imageAddForm: FormGroup;
   cars: CarDetail[];
   carFilter: number;
-  imageModel:ImageCar
+  imageModel:CarImage
+  x:any
+  fileName:string
 
   constructor(
     private toastrService: ToastrService,
@@ -61,29 +64,39 @@ export class ImageAddComponent implements OnInit {
 
   // }
 
-  onChange(event:Event){
+  onFileSelected(event:any){
+    const file:File = event.target.files[0];
+
+    console.log(event)
     console.log(event.target)
+    console.log(event.target.files)
+   // console.log(file)
+        if (file) {
+          //Dosya bilgileri
+          
+            this.fileName = file.name;
+
+            const formData1 = new FormData();
+
+            formData1.append("thumbnail", file);
+        }
   }
 
-  add() {
-    //console.log(this.imageAddForm)
-    //console.log(this.imageAddForm.value.file)
+  add(event:any) {
+    
+    const file:File = event.target.files[0];
 
-    //const image = document.getElementById('uploaded').files[0]
-
-    console.log()
+        if (file) {
+            this.fileName = file.name;
+        }
 
     if (this.imageAddForm.valid) {
       this.imageModel = Object.assign({}, this.imageAddForm.value);
-      // this.carImageService.addCarImage(this.imageModel).subscribe(
-      //   (response) => {
-      //     this.toastrService.success(response.message, 'Başarılı');
-      //   },
-      //   (responsError) => {
-      //        this.errorService.responseErrorMessages(responseError);
-      //     }
-      //   }
-      // );
+      this.carImageService.addCarImage(this.imageModel).subscribe(response=>{
+        this.toastrService.success(response.message,"Başarılı")
+      },responseError =>{
+        this.errorService.responseErrorMessages(responseError)
+      })
     } else {
       this.toastrService.error('Form eksik.', 'Dikkat');
     }

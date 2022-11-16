@@ -2,10 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 import { AuthService } from 'src/app/services/auth.service';
-import { CustomerService } from 'src/app/services/customer.service';
 import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
@@ -14,7 +12,6 @@ import { PaymentService } from 'src/app/services/payment.service';
   styleUrls: ['./rental.component.css'],
 })
 export class RentalComponent implements OnInit {
-  custormerDetails: Customer[]=[];
   customerId:number;
   rentDate:Date;
   returnDate:Date;

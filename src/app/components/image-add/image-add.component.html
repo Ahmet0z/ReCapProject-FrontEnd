@@ -13,7 +13,8 @@
                 formControlName="file"
                 class="form-control"
                 placeholder="Araç Resimi"
-                (change)="onChange($event)"
+                #fileUpload
+                (change)="onFileSelected($event)"
               />
             </div>
           </div>
@@ -36,7 +37,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button class="btn btn-fill btn-dark" (click)="add()">Ekle</button>
+        <button class="btn btn-fill btn-dark" (click)="add(2)">Ekle</button>
       </div>
     </div>
   </div>
